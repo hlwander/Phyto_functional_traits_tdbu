@@ -3,7 +3,7 @@
 
 #load in packages
 if (!require("pacman")) {install.packages("pacman") }
-pacman::p_load(readxl, dplyr, tidyverse, ggpubr, stringr)
+pacman::p_load(readxl, dplyr, tidyverse, ggpubr, stringr, ggplot2)
 
 # Path to your Excel file
 file_path <- "data/TD_BU_data_extraction.xlsx"
@@ -43,7 +43,7 @@ rayyan_papers_clean |> filter(!str_detect(study, valid_pattern)) |>
   dplyr::select(study)
 #these are okay - just variations in author names
 
-#count the number of double-reviewed studies (n=98 papers)
+#count the number of double-reviewed studies (n=97 papers)
 rayyan_papers_clean |> 
   count(study, name = "n") |> 
   arrange(desc(n)) |>
@@ -189,22 +189,14 @@ rayyan_papers_clean <- rayyan_papers_clean |>
   mutate(study = coalesce(study_fixed, study)) |>
   select(-study_fixed)
 
-#### check for consistency in the double-reviewed papers ####
-multi_review <- rayyan_papers_clean |>
-  group_by(study) |>
-  filter(n() > 1) |>
-  ungroup()
-
 #check if include decisions agree
 include_disagreements <- rayyan_papers_clean |>
   group_by(study) |>
   summarise(n_reviewers = n(),
     n_unique_decisions = n_distinct(include),
+    include_responses = paste(unique(include), collapse = ", "),
     .groups = "drop") |>
   filter(n_reviewers > 1 & n_unique_decisions > 1)
-
-
-
 
 #### read in references and check that the keeps are all accounted for ####
 refs <- read.csv("data/articles.csv") 
@@ -239,18 +231,26 @@ missing <- refs |>
 
 #### exclude papers that do not meet our lit review criteria ####
 rayyan_study_yes <- rayyan_papers_clean |>
-  filter(include %in% c("include","y", "yes")) |>
+  filter(include %in% c("include","y", "yes", "Yes")) |>
   dplyr::select(study)
 
 #filter papers that have at least one yes
+rayyan_papers_include <- rayyan_papers_clean |>
+  filter(study %in% rayyan_study_yes$study,
+         !study %in% c("Ji et al 2013", "Kalcheva et al 2010", 
+                       "Pan et al 2024", "Rumschlag et al 2020",
+                       "Yang et al 2019", "Charalampous et al 2024"))
+         
+#drop the Zhang et al 2021 and 2023 papers
+rayyan_papers_include <- rayyan_papers_include[!(rayyan_papers_include$study=="Zhang et al 2021" &
+                                  rayyan_papers_include$include=="no"),]
 
-
-
+rayyan_papers_include <- rayyan_papers_include[!(rayyan_papers_include$study=="Zhang et al 2023" &
+                                                   rayyan_papers_include$include %in% c("n","maybe/exclude")),]
 
 #studies that need to be checked:
 # Acevedo-Trejos et al 2018 (Britt)
 # Almeda et al 2018 (Megan)
-# Charalampous et al 2024 (Isabelle); no??
 # Garcia-Gomez et al 2020 (Britt?)
 
 #discrepancies
@@ -262,6 +262,7 @@ rayyan_study_yes <- rayyan_papers_clean |>
 # Kalcheva et al 2010 --> (no if bacterioplankton, check w/ Britt)
 # Kong et al 2020 --> yes
 # Lemmens et al 2018 --> yes
+# Charalampous et al 2024 --> no
 # Pan et al 2024 --> no (waiting on Britt to confirm)
 # Roberts et al 2003 --> yes (waiting on Isabelle to confirm)
 # Rochera et al 2017 --> yes (waiting on Isabelle/Megan)
@@ -274,27 +275,247 @@ rayyan_study_yes <- rayyan_papers_clean |>
 # same with Zhang et al 2023
 
 
-
-
 #### clean up the spreadsheet cols of interest ####
+rayyan_papers_include_final <- rayyan_papers_include |>
+  mutate(ecosystem = ifelse(ecosystem %in% c("marine", "marine; bay", "marine; coastal; aquaculture",
+                                             "marine; salinity gradient from freshwater input",
+                                             "Marine", "MArine"), "marine",
+                      ifelse(ecosystem %in% c("estuary", "Estuarine", "estuarine", "brackish"),
+                             "estuary",
+                      ifelse(ecosystem %in% c("freshwater","freshwater; lacustrine",
+                                              "freshwater, lacustrine", 
+                                              "lab (volvic water and munich well water)",
+                                              "Freshwater (Saline lakes)","Freshwater",
+                                              "freshwater; coastal lagoon"), "freshwater", ecosystem)))) |>
+#freshwater; coastal lagoon --> classifying as fw bc it's a constructed wetland that flows into a lagoon
+  mutate(top_bottom_both = dplyr::na_if(top_bottom_both, "?"),
+         top_bottom_both = dplyr::na_if(top_bottom_both, "NA"),
+         top_bottom_both = as.numeric(top_bottom_both)) |>
+  mutate(phyto_func_response = ifelse(phyto_func_response %in% c("yes","1.0", "1"), 1,
+                                ifelse(phyto_func_response %in% c("no", "0", "0.0"), 0, NA))) |>
+  mutate(func_group_type = ifelse(func_group_type %in% c("taxonomic", "Taxonomic", "see notes",
+                                                         "Taxonomy", "taxonomic / pigment"), "taxonomic",
+                           ifelse(func_group_type %in% c("morphological","Morphological (size)","Morphological"),
+                                  "morphological",
+                           ifelse(func_group_type %in% c("physiological", "acc. Reynolds?", "Physiological (trophic)"),
+                                  "physiological",
+                           ifelse(func_group_type %in% c("taxonomic, morphological","taxonomic and a little morphological",
+                                                         "taxonomic and morphological","taxonomic; morphological",
+                                                         "morphological, taxonomic","morphological; taxonomic",
+                                                         "Taxonomic, morphological","Morphological, taxonomic",
+                                                         "Taxonomic / morphological","Taxonomic / morhpological"), 
+                                  "taxonomic, morphological",
+                           ifelse(func_group_type %in% c("taxonomic, morphological, physiological",
+                                                         "taxonomic, physiological, morphological",
+                                                         "taxonomic morphological physiological",
+                                                         "taxonomic, physiological and morphological",
+                                                         "taxonomic; morphology; physiology (see notes)",
+                                                         "physiological; morphological; taxonomic",
+                                                         "Taxonomic, physiological, morphological",
+                                                         "orphological, taxonomic, physiology",
+                                                         "Morphological, taxonomic, physiology a bit",
+                                                         "Morphological, taxonomic, physiology"), 
+                                  "taxonomic, morphological, physiological",
+                            ifelse(func_group_type %in% c("morphological, physiological","morphological; physiological",
+                                                          "physiological, morphological","physiological; morphological",
+                                                          "Morphological, physiological","Morphological / physiology"), 
+                                   "morphological, physiological",
+                            ifelse(func_group_type %in% c("taxonomic and physiological","physiological; taxonomic",
+                                                          "taxonomic; physiological","physiological (some taxonomic)",
+                                                          "Taxonomic, physiological (resistance to a heat wave)",
+                                                          "Taxonomic, physiological","Taxonomic / physiology"),
+                                   "taxonomic, physiological",
+                            ifelse(func_group_type %in% c("taxonomic, omics","taxonomic / omics"), 
+                                   "taxonomic, omics", func_group_type))))))))) |>
+  mutate(fish = ifelse(fish %in% c("1 (mussels, snails, etc.)", "1 (mussels)"), "1", fish),
+    across(c(zoo, fish, microbes),  ~ as.numeric(dplyr::na_if(.x, "?")))) |> #make cols numeric
+  mutate(study_type = ifelse(study %in% "McMahon et al 2012", "lab", study_type)) |>
+  mutate(study_type = ifelse(study_type %in% c("field", "filed","field, molecular barcoding",
+                                               "field; experiment","incubation","mesocosm",
+                                               "outdoor experiment", "field; experiment; incubation",
+                                               "experiment"), "field",
+                      ifelse(study_type %in% c("field, lab","field; lab","lab, field",
+                                               "field / lab", "field and lab"), "field, lab",
+                      ifelse(study_type %in% c("lab", "lab with environmental isolates"), "lab",
+                      ifelse(study_type %in% c("field; model; experiment", "field / model"),
+                             "field, model",
+                      ifelse(study_type %in% c("model","biogeochemical ocean model",
+                                               "mass-balance trophic model","modelling"),
+                             "model", study_type)))))) |>
+  mutate(experimental_design = ifelse(experimental_design %in% c("in situ, mesocosm","in situ, microcosm",
+                                                                 "mesocosm; in situ","in-situ, incubation",
+                                                                 "in situ, incubation","incubation, in situ",
+                                                                 "in situ; mesocosm","in situ; microcosm",
+                                                                 "in situ and incubations on ship", "outdoor mesocosm",
+                                                                 "in situ / mesocosm (whole lake experiment)"),
+                                      "in situ, experiment",
+                                ifelse(experimental_design %in% c("in vitro","microcosm, mesocosm","mescosm","microcosm",
+                                                                  "mesocosm","microcosm?, incubation", "microcosm/incubation",
+                                                                  "mesocosm (field enclosure)","incubation"), "experiment",
+                                ifelse(experimental_design %in% c("in situ / in silico", "in situ, insilico",
+                                                                         "in silico based on in situ data cruises included in study"),
+                                       "in situ, in silico",
+                                ifelse(experimental_design %in% c("mesocosm / barcoding"), "experiment, omics",
+                                ifelse(experimental_design %in% c("omics (barcoding)"), "omics", experimental_design)))))) |>
+  mutate(importance_td_vs_bu = ifelse(importance_td_vs_bu %in% c("td","td (speculated in discussion, not a primary result)",
+                                                                 "td emphasis"), "td",
+                               ifelse(importance_td_vs_bu %in% c("both","NA (both)","na","td; bu", "NA"), NA, importance_td_vs_bu))) |>
+  mutate(zoop_func_response = ifelse(zoop_func_response %in% c("no","0","0.0"), 0,
+                              ifelse(zoop_func_response %in% c("yes","1","1.0"), 1, NA)))
 
+#add year
+rayyan_papers_include_final <-  rayyan_papers_include_final |>
+  mutate(year = as.numeric(str_extract(study, "\\d{4}$")))
 
+#export double-reviewed studies from cleaned df for checking
+repeated_studies <- rayyan_papers_include_final |>
+  group_by(study) |>
+  summarise(n_reviewers = n(), .groups = "drop") |>
+  filter(n_reviewers > 1) |>
+  pull(study)
 
+spreadsheet_to_check <- rayyan_papers_include_final |>
+  filter(study %in% repeated_studies) |>
+  arrange(study)
+write.csv(spreadsheet_to_check, "data/papers_w_multiple_reviewers.csv", row.names = F)
 
+#------------------------------------------------------------------------------#
+#### FIGURES ####
+year_eco_sum <- rayyan_papers_include_final |>
+  filter(!is.na(ecosystem)) |>
+  mutate(ecosystem = str_replace_all(ecosystem, ";", ",")) |>
+  separate_rows(ecosystem, sep = ",") |>
+  mutate(ecosystem = str_trim(ecosystem)) |> #split ecosystem into multiple rows when applicable 
+  group_by(year, ecosystem) |>
+  summarise(n = n(), .groups = "drop") 
 
+#Fig. 1: Historical progression of use of functional groups across ecosystems
+ggplot(year_eco_sum, # |> filter(!ecosystem %in% "estuary"),
+       aes(x = year, y = n, color = ecosystem)) +
+  geom_line(size = 1) + geom_point() + theme_bw() +
+  labs(x = "", y = "Number of studies", color = "") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = "top",
+        legend.direction = "horizontal",
+        legend.box.spacing = unit(0.001, "cm"))
+#ggsave("figures/phyto_func_group_progression_years.jpg", width = 5, height = 4)
 
+#Fig 2: total number of studies in each ecosystem
+fg_eco_sum <- rayyan_papers_include_final |>
+  filter(!is.na(ecosystem)) |>
+  mutate(ecosystem = str_replace_all(ecosystem, ";", ",")) |>
+  separate_rows(ecosystem, sep = ",") |>
+  mutate(ecosystem = stringr::str_trim(ecosystem)) |>
+  distinct(study, ecosystem, .keep_all = TRUE) |>  # keeps first instance only
+  group_by(ecosystem) |>
+  summarise(n = n(), .groups = "drop") 
 
-# Graph to check whether the number of publications on each system
+ggplot(fg_eco_sum, aes(x = ecosystem, y = n, fill = ecosystem)) +
+  geom_col(width = 0.7) + theme_bw() + 
+  labs(x = "", y = "Number of studies", fill = "") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = "none")
+#ggsave("figures/phyto_func_group_by_ecosyste_total.jpg", width = 5, height = 4)
 
-# making a dataframe just for that
-ecosystem_only <- combined_yes_only %>%
-  select(ecosystem) %>%
-  mutate(ecosystem = str_to_lower(ecosystem)) %>%              # lowercase
-  separate_rows(ecosystem, sep = ";|,") %>%                   # split on ; OR ,
-  mutate(ecosystem = str_trim(ecosystem)) %>%
-  filter(ecosystem %in% c("freshwater", "marine", "estuary","brackish"))
+#Fig 3: stacked bar plot of functional group types across ecosystems
+fg_type_eco <- rayyan_papers_include_final |>
+  filter(!is.na(ecosystem),
+         !is.na(func_group_type)) |>
+  mutate(ecosystem = stringr::str_replace_all(ecosystem, ";", ","),
+         func_group_type = stringr::str_replace_all(func_group_type, ";", ",")) |>
+  tidyr::separate_rows(ecosystem, sep = ",\\s*") |>
+  tidyr::separate_rows(func_group_type, sep = ",\\s*") |>
+  mutate(ecosystem = stringr::str_trim(ecosystem),
+        func_group_type = stringr::str_trim(func_group_type)) |>
+  distinct(study, ecosystem, func_group_type, .keep_all = TRUE) |>
+  group_by(ecosystem, func_group_type) |>
+  summarise(n = n(), .groups = "drop")
 
+ggplot(fg_type_eco,
+       aes(x = ecosystem, y = n, fill = func_group_type)) +
+  geom_col(position = position_dodge(width = 0.8), width = 0.7) +
+  #geom_col(width = 0.7) + 
+  theme_bw() +
+  labs(x = "", y = "Number of studies", fill = "") +
+  theme(panel.grid = element_blank(),
+        legend.position = "top",
+        legend.direction = "horizontal")
+#ggsave("figures/phyto_func_group_by_ecosystem_total.jpg", width = 5, height = 4)
 
-ggplot(ecosystem_only, aes(x = ecosystem))+  
-  geom_bar()+
-  theme_pubr()
+#heatmap to see how prevalent different functional group definitions are across ecosystems
+ggplot(fg_type_eco, aes(x = func_group_type, y = ecosystem, fill = n)) +
+  geom_tile(color = "white") +
+  geom_text(aes(label = n), color = "black", size = 4) +
+  scale_fill_gradient(low = "white", high = "steelblue") +
+  theme_minimal() + theme(axis.text = element_text(size=8),
+                          axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(fill = "Number of studies", x = "", y = "")
+#ggsave("figures/phyto_func_group_by_ecosystem_heatmapl.jpg", width = 5, height = 4)
+
+#fig 4: td/bu emphasis across ecosystems
+
+rayyan_papers_include_final <- rayyan_papers_include_final |>
+  mutate(importance_td_vs_bu = ifelse(top_bottom_both==3 & is.na(importance_td_vs_bu), 
+                                      "both", importance_td_vs_bu))
+
+fig4_df <- rayyan_papers_include_final |>
+  filter(!is.na(ecosystem), !is.na(func_group_type)) |>
+  mutate(ecosystem = str_replace_all(ecosystem, ";", ","),
+    func_group_type = str_replace_all(func_group_type, ";", ",")) |>
+  separate_rows(ecosystem, sep = ",\\s*") |>
+  separate_rows(func_group_type, sep = ",\\s*") |>
+  mutate(ecosystem = str_trim(ecosystem),
+         func_group_type = str_trim(func_group_type),
+         importance_td_vs_bu = if_else(is.na(importance_td_vs_bu),
+                                       "NA",importance_td_vs_bu)) |>
+  distinct(study, ecosystem, func_group_type, .keep_all = TRUE) |>
+  group_by(ecosystem, func_group_type, importance_td_vs_bu) |>
+  summarise(n = n(), .groups = "drop")
+
+ggplot(fig4_df |> filter(!ecosystem %in% "estuary"),
+       aes(x = func_group_type, y = n, fill = importance_td_vs_bu)) +
+  geom_col(position = position_dodge(width = 0.8), width = 0.7) +
+  facet_wrap(~ ecosystem) +
+  theme_bw() + labs(x = "Functional group type", y = "Number of studies",
+                    fill = "Process emphasis") +
+  theme(axis.text = element_text(size=8),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid = element_blank(),
+        legend.position = "top",
+        legend.direction = "horizontal")
+#ggsave("figures/td_bu_emphasis_by_func_groups.jpg", width = 5, height = 4)
+
+#fig 5 - td vs bu across ecosysyems
+td_eco_df <- rayyan_papers_include_final |>
+  filter(!is.na(ecosystem)) |>
+  mutate(ecosystem = str_replace_all(ecosystem, ";", ",")) |>
+  separate_rows(ecosystem, sep = ",\\s*") |>
+  mutate(ecosystem = str_trim(ecosystem),
+         importance_td_vs_bu = if_else(is.na(importance_td_vs_bu), 
+                                       "Not specified", importance_td_vs_bu)) |>
+  distinct(study, ecosystem, .keep_all = TRUE) |>
+  group_by(ecosystem, importance_td_vs_bu) |>
+  summarise(n = n(), .groups = "drop")
+
+ggplot(td_eco_df |> filter(!is.na(importance_td_vs_bu)),
+       aes(x = ecosystem, y = n, fill = importance_td_vs_bu)) +
+  geom_col(position = position_dodge(width = 0.8), width = 0.7) +
+  theme_bw() +
+  labs(x = "", y = "Number of studies", fill = "Process emphasis") +
+  theme(panel.grid = element_blank(),
+        legend.position = "top",
+        legend.direction = "horizontal")
+#ggsave("figures/td_bu_emphasis_by_ecosystem.jpg", width = 5, height = 4)
+
+#proportions
+td_eco_prop <- td_eco_df |>
+  group_by(ecosystem) |>
+  mutate(prop = n / sum(n))
+
+ggplot(td_eco_prop, aes(x = ecosystem, y = prop, fill = importance_td_vs_bu)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  theme_bw() +
+  labs(x = "", y = "Proportion of studies", fill = "Process emphasis")
