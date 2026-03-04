@@ -43,7 +43,7 @@ rayyan_papers_clean |> filter(!str_detect(study, valid_pattern)) |>
   dplyr::select(study)
 #these are okay - just variations in author names
 
-#count the number of double-reviewed studies (n=97 papers)
+#count the number of double-reviewed studies (n=110 papers)
 rayyan_papers_clean |> 
   count(study, name = "n") |> 
   arrange(desc(n)) |>
@@ -69,7 +69,7 @@ list <- rayyan_papers_clean |>
 # Griffith et al 2013 --> Griffiths et al 2013 (Anika)
 # Helminen et al 1997 --> Helminen and Sarvala 1997 (Emmy)
 # Hill et al 2008 --> Hill and McQuaid 2008 (Britt)
-# Hoehn et al 1995 --> Hoehn anf Schmidt-Halewicz 1995 (Britt) check bc she did both??
+# Hoehn et al 1995 --> Hoehn anf Schmidt-Halewicz 1995 (Britt) 
 # Hrycik et al 2021 --> Hrycik and Stockwell 2021 (Emmy)
 # Huete-Stauffer et al 2012 --> Huete-Stauffer and Moran 2012 (Ewaldo)
 # Karuza et al 2015 --> Karuza et al 2016 (Heather)
@@ -189,7 +189,7 @@ rayyan_papers_clean <- rayyan_papers_clean |>
   mutate(study = coalesce(study_fixed, study)) |>
   select(-study_fixed)
 
-#check if include decisions agree
+#check if include decisions agree (n=95)
 include_disagreements <- rayyan_papers_clean |>
   group_by(study) |>
   summarise(n_reviewers = n(),
@@ -241,7 +241,7 @@ rayyan_papers_include <- rayyan_papers_clean |>
                        "Pan et al 2024", "Rumschlag et al 2020",
                        "Yang et al 2019", "Charalampous et al 2024"))
          
-#drop the Zhang et al 2021 and 2023 papers
+#drop the Zhang et al 2021 and 2023 papers (n=4 papers)
 rayyan_papers_include <- rayyan_papers_include[!(rayyan_papers_include$study=="Zhang et al 2021" &
                                   rayyan_papers_include$include=="no"),]
 
@@ -249,28 +249,18 @@ rayyan_papers_include <- rayyan_papers_include[!(rayyan_papers_include$study=="Z
                                                    rayyan_papers_include$include %in% c("n","maybe/exclude")),]
 
 #studies that need to be checked:
-# Acevedo-Trejos et al 2018 (Britt)
 # Almeda et al 2018 (Megan)
-# Garcia-Gomez et al 2020 (Britt?)
+# Garcia-Gomez et al 2020 (Britt?) --> isn't OTU classification an omics approach?
 
 #discrepancies
-# do Nascimento Filho et al. 2019 --> yes
 # Arnold et al 2009 --> yes
 # Bhele et al 2022 --> yes
-# Bracis et al 2020 --> no
-# Ji et al 2013 --> I think no but checking w/ Britt
-# Kalcheva et al 2010 --> (no if bacterioplankton, check w/ Britt)
 # Kong et al 2020 --> yes
 # Lemmens et al 2018 --> yes
-# Charalampous et al 2024 --> no
 # Pan et al 2024 --> no (waiting on Britt to confirm)
-# Roberts et al 2003 --> yes (waiting on Isabelle to confirm)
-# Rochera et al 2017 --> yes (waiting on Isabelle/Megan)
-# Rumschlag et al 2020 --> no (waiting for Britt)
+# Rochera et al 2017 --> yes 
 # Sommer et al 2003 --> yes (ignore Anika decision)
 # Tong et al 2023 --> yes (ignore Anika decision)
-# check Wan et al 2024 once Britt updates her spreadsheet
-# Yang et al 2019 --> ??? (no?)
 # Zhang et al 2021 --> two different papers, one included and one not
 # same with Zhang et al 2023
 
@@ -374,9 +364,12 @@ repeated_studies <- rayyan_papers_include_final |>
   filter(n_reviewers > 1) |>
   pull(study)
 
-spreadsheet_to_check <- rayyan_papers_include_final |>
+spreadsheet_to_check <- rayyan_papers_include_final |> #n=76
   filter(study %in% repeated_studies) |>
-  arrange(study)
+  arrange(study) |>
+  dplyr::select(-c(zoo, fish, microbes, manipulation, coordinates, 
+                   'spatial extent_km', 'temporal duration', 'trophic state',
+                   zoop_func_response))
 write.csv(spreadsheet_to_check, "data/papers_w_multiple_reviewers.csv", row.names = F)
 
 #------------------------------------------------------------------------------#
@@ -431,7 +424,7 @@ fg_type_eco <- rayyan_papers_include_final |>
         func_group_type = stringr::str_trim(func_group_type)) |>
   distinct(study, ecosystem, func_group_type, .keep_all = TRUE) |>
   group_by(ecosystem, func_group_type) |>
-  summarise(n = n(), .groups = "drop")
+  summarise(n = n(), .groups = "drop") 
 
 ggplot(fg_type_eco,
        aes(x = ecosystem, y = n, fill = func_group_type)) +
