@@ -107,7 +107,6 @@ list <- rayyan_papers_clean |>
 # Dory et al 2022 --> Dory et al 2023 (Ewaldo)
 # Hjoth et al 2008 --> Hjorth et al 2008 (Isabelle)
 # Levesque et al 2018 --> Levesque et al 2019 (Heather)
-# Roberts et al 2004 --> Roberts et al 2003 (Isabelle and Heather)
 # d'Oultremont et al 2002 --> d’Oultremont and Gutierrez 2002 (Emmy)
 # Dutkiewics et al 2021--> Dutkiewicz et al 2021 (Emmy)
 # Hugget et al 2023 --> Huggett et al 2023 (Megan)
@@ -144,8 +143,8 @@ study_corrections <- tibble::tibble(
                  "Sanderson and Frost1996", "Segovia et al 2018/7", "Steiner et al 2002",
                  "Sunback et al 2007", "Wilken 2014", "Othman et al 2018",
                  "Cossarini et al 2008", "Cossarini et al 2008", "Dory et al 2022",
-                 "Hjoth et al 2008", "Levesque et al 2018", "Roberts et al 2004",
-                 "Roberts et al 2004", "d'Oultremont et al 2002","Dutkiewics et al 2021",
+                 "Hjoth et al 2008", "Levesque et al 2018",
+                 "d'Oultremont et al 2002","Dutkiewics et al 2021",
                  "Grillo-Avila et al 2025", "Hugget et al 2023", "Samuelsson et al 2003"),
   study_fixed = c("Le Noac'h et al 2021", "Goericke 2002", "Corno 2006",
                   "Samuelsson and Andersson 2003", "Luo et al 2018",
@@ -169,10 +168,9 @@ study_corrections <- tibble::tibble(
                   "Steiner 2002", "Sundback et al 2007", "Wilken et al 2014",
                   "Ben Othman et al 2018", "Cossarini and Solidoro 2008",
                   "Cossarini and Solidoro 2008", "Dory et al 2023", "Hjorth et al 2008",
-                  "Levesque et al 2019", "Roberts et al 2003", "Roberts et al 2003",
-                  "d’Oultremont and Gutierrez 2002", "Dutkiewicz et al 2021",
-                  "Grillo‑Avila et al 2025", "Huggett et al 2023", 
-                  "Samuelsson and Andersson 2003"),
+                  "Levesque et al 2019", "d’Oultremont and Gutierrez 2002", 
+                  "Dutkiewicz et al 2021","Grillo‑Avila et al 2025", 
+                  "Huggett et al 2023", "Samuelsson and Andersson 2003"),
   reviewer = c("Ewaldo", "Anika", "Isabelle", "Britt", "Arianna", "Ewaldo", "Emmy",
                "Arianna", "Anika", "Ewaldo", "Isabelle", "Anika", "Ewaldo", "Ewaldo",
                "Anika", "Anika", "Emmy", "Britt", "Britt", "Emmy", "Ewaldo", "Heather",
@@ -181,7 +179,7 @@ study_corrections <- tibble::tibble(
                "Anika", "Britt", "Emmy", "Megan", "Megan", "Megan", "Megan", "Megan",
                "Megan", "Megan", "Megan", "Megan", "Megan", "Megan", "Megan", "Megan",
                "Megan", "Emmy", 'Anika', "Britt", "Ewaldo", "Isabelle", "Heather",
-               "Heather", "Isabelle", "Emmy", "Emmy", "Ewaldo", "Megan", "Britt"))
+               "Emmy", "Emmy", "Ewaldo", "Megan", "Britt"))
 
 #now update the study names
 rayyan_papers_clean <- rayyan_papers_clean |>
@@ -357,7 +355,7 @@ rayyan_papers_include_final <- rayyan_papers_include |>
 rayyan_papers_include_final <-  rayyan_papers_include_final |>
   mutate(year = as.numeric(str_extract(study, "\\d{4}$")))
 
-#export double-reviewed studies from cleaned df for checking
+#export double-reviewed studies from cleaned df for checking (n=78)
 repeated_studies <- rayyan_papers_include_final |>
   group_by(study) |>
   summarise(n_reviewers = n(), .groups = "drop") |>
@@ -370,7 +368,15 @@ spreadsheet_to_check <- rayyan_papers_include_final |> #n=76
   dplyr::select(-c(zoo, fish, microbes, manipulation, coordinates, 
                    'spatial extent_km', 'temporal duration', 'trophic state',
                    zoop_func_response))
-write.csv(spreadsheet_to_check, "data/papers_w_multiple_reviewers.csv", row.names = F)
+#write.csv(spreadsheet_to_check, "data/papers_w_multiple_reviewers.csv", row.names = F)
+
+#export df with the single-reviewed papers
+single_reviewed_for_checking <- rayyan_papers_include_final |>
+  dplyr::select(colnames(spreadsheet_to_check)) |>
+  filter(!study %in% spreadsheet_to_check$study) |> 
+  mutate(reviewer = factor(reviewer, levels = c("Ewaldo","Isabelle","Emmy","Anika",
+                                                "Heather","Arianna","Britt","Megan")))
+#write.csv(single_reviewed_for_checking, "data/papers_w_one_reviewer.csv", row.names = F)
 
 #------------------------------------------------------------------------------#
 #### FIGURES ####

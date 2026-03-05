@@ -1,0 +1,209 @@
+"study","ecosystem","top_bottom_both","phyto_func_response","func_group_type","location","study_type","experimental_design","importance_td_vs_bu","notes","include","reviewer","year"
+"Villeger et al 2019","marine",2,1,"taxonomic","NA","lab","experiment","bu","manipulation was actually fish species that have different excretion rates","y","Ewaldo",2019
+"Havens 1994","freshwater",3,1,"taxonomic, morphological",NA,"field","experiment","bu","Chemical stress here is Copper sulfate; weird to assess BU vs TD because in the presence of stress, BU became more prevalent","y","Ewaldo",1994
+"Wang et al 2020","freshwater",2,1,"taxonomic, morphological, physiological","Lake Erhai, China","field","in situ",NA,NA,"y","Ewaldo",2020
+"Chen et al 2008","freshwater",3,1,"taxonomic","Lake Taihu, China","field","in situ",NA,"TD vs BU was site dependent","y","Ewaldo",2008
+"Zeng et al 2017","freshwater",2,1,"taxonomic","Lake West, China","field","in situ","bu","There is no zoo, but bu had contribution here","y","Ewaldo",2017
+"Costa et al 2023","marine",3,1,"taxonomic","Northern Atlantic Peninsula","field","in situ",NA,"TD control also was important. used pigments as grazing index, not really zoo.","y","Ewaldo",2023
+"Mousseau et al 1996","marine",3,1,"taxonomic","Scotian Shelf Northwest Atlantic","field","in situ",NA,"mentions zoo, but doesn't show data","y","Ewaldo",1996
+"Guo et al 2023","freshwater",3,1,"taxonomic","Lake Bao'an, Hubei Province, China","field","experiment",NA,NA,"y","Ewaldo",2023
+"Amorim et al 2019","freshwater",1,1,"morphological","Pernambuco, Brazil","lab","experiment","td",NA,"y","Ewaldo",2019
+"da Silva et al 2019","freshwater",1,1,"morphological","Parana River, Brazil","lab","experiment","td","manipulated zoo, but did not find a zoo pressure when increasing zoo density","y","Ewaldo",2019
+"Woodworth-Jefcoats et al 2013","marine",1,1,"morphological","North Pacific","model","in silico",NA,NA,"y","Ewaldo",2013
+"Dory et al 2023","freshwater",2,1,"taxonomic, morphological, physiological","Lake Cordes","field","in situ","bu",NA,"y","Ewaldo",2023
+"Rock et al 2016","freshwater",3,1,"taxonomic, morphological","Miami University's Ecology Research Center (ERC; Oxford, OH)","lab","experiment",NA,NA,"y","Ewaldo",2016
+"Reaugh et al 2007","estuary",3,1,"morphological","Chesapeak Bay, MD, USA","field, lab","in situ, experiment",NA,"maybe? heterotrophic microplankton. for purely phytoplankton, used chlorophyll, but in two size fractions","y","Ewaldo",2007
+"Tessier and Woodruff 2002","freshwater",3,1,"morphological, physiological","southwestern Michigan, USA","field, lab","in situ, experiment","td",NA,"y","Ewaldo",2002
+"Dantas et al 2009","freshwater",3,1,"taxonomic","Mundau Reservior","field","in situ",NA,"this paper was only in portugese, I did my best with google translate","yes","Isabelle",2009
+"Banos et al 2020","marine",1,1,"taxonomic","Helgoland Roads","field","in situ","td","focused on td effect of fungi on phyto","yes","Isabelle",2020
+"Zollner et al 2003","freshwater",1,1,"morphological","Scho ̈hsee","field","experiment","td",NA,"yes","Isabelle",2003
+"Petzoldt et al 2009","freshwater",1,1,"morphological","NA","model","in silico","td",NA,"yes","Isabelle",2009
+"Goldyn et al 2010","freshwater",3,1,"taxonomic","Lake Rusalka","field","in situ",NA,NA,"yes","Isabelle",2010
+"Parvathi et al 2014","freshwater",1,1,"morphological","Lake Geneva","field","in situ","td","td control of virus on phytos","yes","Isabelle",2014
+"Garcia-Comas et al 2016","marine",1,1,"morphological","East china sea and waters east of taiwan","field","in situ","td",NA,"yes","Isabelle",2016
+"Rao et al 2024","freshwater",3,1,"taxonomic","Lake Donghu","model","in silico",NA,NA,"yes","Isabelle",2024
+"Shimoda et al 2016","freshwater",3,1,"taxonomic","Hamilton Harbour Lake Ontario","model","in silico",NA,NA,"yes","Isabelle",2016
+"Lopez-Flores et al 2006","estuary",3,1,"taxonomic, morphological, physiological","La Pletera salt marsh","field","in situ","bu",NA,"yes","Isabelle",2006
+"Wei et al 2022","freshwater",3,1,"taxonomic","Lake Taihu","lab","experiment",NA,NA,"yes","Isabelle",2022
+"Cloern and Dufford 2005","estuary",3,1,"taxonomic","San Francisco Bay","field","in situ",NA,NA,"yes","Isabelle",2005
+"Griffin et al 2001","estuary",3,1,"taxonomic","Swan River Estuary","model","in silico",NA,NA,"yes","Isabelle",2001
+"Tanaka et al 2007","marine",2,1,"taxonomic, morphological","Cyprus eddy","model","in silico","bu",NA,"yes","Isabelle",2007
+"Sinistro et al 2007","freshwater",1,1,"taxonomic, morphological","Laguna Grande","lab","experiment","td",NA,"yes","Isabelle",2007
+"Di Pane et al 2022","marine",2,1,"taxonomic, morphological, physiological","North sea","field","in situ","bu",NA,"yes","Isabelle",2022
+"Troedsson et al 2007","marine",1,1,"taxonomic, morphological","NA-culture experiment","lab","experiment","td",NA,"yes","Isabelle",2007
+"Zaky et al 2024","freshwater",3,1,"taxonomic, morphological","Santa Fe","lab","experiment",NA,NA,"yes","Isabelle",2024
+"He et al 2021","marine",1,1,"taxonomic","Daya Bay","field","in situ","td",NA,"yes","Isabelle",2021
+"Hjorth et al 2008","marine",3,1,"taxonomic","Isafkord Denmark","field","experiment",NA,NA,"yes","Isabelle",2008
+"Harig and Bain 1998","freshwater",1,1,"taxonomic","Adirondack lakes","field","in situ","td",NA,"yes","Isabelle",1998
+"Domingues et al 2011","estuary",2,1,"taxonomic","Guadiana Estuary","lab","experiment","bu",NA,"yes","Isabelle",2011
+"Moscoso et al 2022","marine",3,1,"morphological","NA","model","in silico","td",NA,"yes","Isabelle",2022
+"Hunt et al 2013","marine",2,1,"taxonomic","Station ALOHA","field","in situ","bu",NA,"yes","Isabelle",2013
+"Sauterey et al 2017","marine",3,1,"taxonomic, morphological","NA","model","in silico",NA,NA,"yes","Isabelle",2017
+"Meyjes et al 2024","marine",1,1,"morphological","Global","model","in silico","td",NA,"yes","Isabelle",2024
+"Strecker et al 2011","freshwater",1,1,"taxonomic","districts of Muskoka and Parry Sound and the county of Haliburton in Ontario","field","in situ","td",NA,"yes","Isabelle",2011
+"Christaki et al 2017","marine",3,1,"taxonomic","eastern english channel","field","in situ",NA,NA,"yes","Isabelle",2017
+"Ferrareze and Nogueira 2013","freshwater",2,1,"taxonomic","Rosana Reservoir","field","in situ","bu",NA,"yes","Isabelle",2013
+"Harcourt et al 2024","marine",2,1,"morphological","NA-culture experiment","lab","experiment","bu",NA,"yes","Isabelle",2024
+"Borics et al 2020","freshwater",2,1,"taxonomic, morphological, physiological","37 lakes across Hungary, Romania, and Croatia","field","in situ","bu",NA,"yes","Isabelle",2020
+"Lin et al 2018","freshwater",1,1,"taxonomic, morphological","Liuxihe Reservior","field","in situ","td",NA,"yes","Isabelle",2018
+"Wong et al 2021","marine",2,1,"taxonomic, morphological, physiological","NA-culture experiment","lab","experiment","bu",NA,"yes","Isabelle",2021
+"Spisla et al 2021","marine",3,1,"taxonomic","Espegrend Marine Research Field Station","field","experiment",NA,NA,"yes","Isabelle",2021
+"Lansac-Toha et al 2021","freshwater",3,1,"morphological","72 lakes across 4 south american floodplains, Amazon, Araguaia, Pantanal, and Parana","field","in situ",NA,NA,"yes","Isabelle",2021
+"Zoccarato et al 2016","marine",1,1,"taxonomic","Piran Slovenia","lab","experiment","td",NA,"yes","Isabelle",2016
+"Bock et al 2020","freshwater",2,1,"taxonomic","Lakes across Europe- Norways, Sweden, Germany, Poland, Romania, Austria, Italy, France, Spain, Switzerland","field","in situ","bu",NA,"yes","Isabelle",2020
+"Vincent and Bowler 2020","marine",1,1,"taxonomic","Global","field","in situ","bu",NA,"yes","Isabelle",2020
+"Zhu et al 2021","freshwater",1,1,"taxonomic","Baiyangdian Lake","field","in situ","td",NA,"yes","Isabelle",2021
+"Calic et al 2013","marine",3,1,"taxonomic, morphological","Mali Ston Bay","field","in situ",NA,NA,"yes","Isabelle",2013
+"Aksnes and Lie 1990","freshwater",2,1,"taxonomic, morphological","Lindaspollene","model","in silico","bu",NA,"yes","Isabelle",1990
+"Suikkanen et al 2021","marine",3,1,"taxonomic, physiological","Baltic sea","field","in situ",NA,NA,"yes","Isabelle",2021
+"Lemley et al 2020","estuary",3,1,"taxonomic","Sundays Estuary","field","in situ","td",NA,"yes","Isabelle",2020
+"St. Gelais et al 2021","freshwater",3,1,"taxonomic, morphological, physiological","Quebec, Canada","field","none",NA,"""We selected functional traits (Table 2) that explicitly characterize the grazing interaction between phytoplankton and zooplankton, as well as their interaction with other trophic levels in the food web. For phytoplankton, we selected traits that define how they interface with resources (i.e. nutrients and light) and the zooplankton grazers (motility, edibility, colony formation). For zooplankton, we focused on traits that define how they consume phytoplankton (i.e. feeding type and trophic group). Phytoplankton traitvalues were obtained from a literature review (see (Longhi and Beisner 2010 for details) and included (i)capacity for N-fixation, (ii) silica demand, (iii) capacity for mixotrophy, (iv) pigment composition (v) cellmotility and (vi) edibility to zooplankton (>35 μm linear dimension) and (vii) tendency to form colonies."" They also looked at genus level taxonomy data.","yes","Anika",2021
+"Metaxas and Scheibling 1996","marine",3,1,"taxonomic","Halifax, Canada","field","in situ",NA,"Reg tropic state: The concentration of macronutrients increased. // Phyto only taxonomic; Zoo grouped into benthic and pelagic grazers
+ from spring to summer and decreased in fall
+in high and splash pools (nitrate+nitrite and
+phosphate 0.1 to 10 FM, ammonium 0 to 5 pM,
+silicate 1 to 30 FM).","yes","Anika",1996
+"Klauschies et al 2012","marine",3,1,"morphological","Kiel Fjord, Baltic Sea, Germany","lab","experiment",NA,"Phytoplankton was divided into three groups: small-sized
+algae (SA, particle size \1,500 lm3), medium-sized
+algae (MA, 1,500–45,000 lm3) and large-sized algae (LA,
+[45,000 lm3 or defence structure against zooplankton
+grazing) (Appendix 1). Microzooplankton was split into two groups: edible microzooplankton(EMZ) and inedible microzooplankton(IMZ) (Appendix 2).","yes","Anika",2012
+"Comte et al 2006","freshwater",3,1,"taxonomic, physiological","Lake Bourget, France","field","none",NA,"Hetertrophic vs. pigmented flagellates","yes","Anika",2006
+"Sailley et al 2015","marine",3,1,"morphological, physiological","None","model","in silico",NA,"ERSEM marine ecosystem model; Phytoplankton = four size-based phytoplankton functional types (P1, diatoms .20 mm; P2, nanophytoplankton 2–20 mm; P3, picophytoplankton ,2 mm and P4, macrophytoplankton .20 mm), heterotrophic nanoflagellates (HNF, 2 – 20 mm), a generic zooplankton (zooplankton for short, defined as any heterotrophic organism, Z . 20 mm) and bacteria are explicitly modeled (Fig. 1a). The four phytoplankton types are divided between two large (P1 and P4, low growth rate and nutrient affinity) and two small (P2 and P3, high growth rate and nutrient affinity). // Zooplankton = Selective/unselective","yes","Anika",2015
+"Roy 2009","marine",2,1,"taxonomic, physiological","NW Bay of Bengal, India","field","none",NA,"Only looked at phytoplankton, no other trophic level! Phytoplankton = These phytoplankton include 65 species of diatoms, 19 of green algae, 9 of cynobacteria and 22 of dinoflagellates. Thus, instead of categorizing the species strictly based on their toxin liberation rate, we combined under the TPP group those species that are potentially toxin producers (either toxic or harmful). They do not directly look at top-down or bottom-up effects, but they discuss it - and suggest that it is neither of these processes here but rather a self-regulatory process.","yes","Anika",2009
+"Low et al 2010","marine",1,1,"taxonomic","Singapore","field","none",NA,"Phytoplankton = Only 32 algae were identifi ed to genus-level; in addition, ‘coccoid greens’ were also included (see Low et al., in review). Algae not identifi ed to genus-level were recorded as Chlorophyta, Cyanophyta, Flagellata, Bacillariophyta (diatoms) and a category ‘others’ for any unidentifi ed phytoplankton.Zooplankton = differentiated into six general groups: calanoids, harpacticoids, cyclopoids, cladocerans, ostracods and rotifers.","yes","Anika",2010
+"Huete-Ortega et al 2014","marine",3,1,"morphological","Ría de Vigo, Spain; Tropical and subtropical Atlantic Ocean","field","none",NA,"Only phytoplankton sampled, no other trophic level; but they discuss top-down and bottom-up processes to be the drivers of differences in community composition across systems","yes","Anika",2014
+"Conroy et al 2017","estuary; freshwater",3,1,"taxonomic","Sandusky Bay, Lake Erie, USA","field","none",NA,"We combined related taxa into higher taxonomic groups focusing our analysis on 5 major groups: (1) Chlorophyta;
+(2) Chrysophyta, including diatoms; (3) Cryptophyta; (4)
+Cyanophyta; and (5) Pyrrhophyta. Zooplankton length-weight, taxonomy. Because we were more interested in the functional
+aspects of different zooplankton taxa, especially the
+potential for top-down control of phytoplankton biomass through zooplankton herbivory, we used a proposed
+functional classification scheme (Barnett et al. 2007) to
+aggregate our taxonomic groupings into 5 main functional groups: (1) littoral and pelagic small herbivorous
+cladocerans and calanoid and cyclopoid copepods; (2) the
+remaining omnivorous and carnivorous copepods; (3)
+large pelagic cladocerans; (4) large littoral cladocerans;
+and (5) Diaphanosoma. Identified crustacean zooplankton
+taxa that were not functionally categorized were assigned
+to the most likely functional group based on the criteria in
+Barnett et al. (2007) and the functional ecological descriptions in Balcer et al. (1984). Identified taxa that were enumerated but not functionally categorized by Barnett et
+al. (2007; i.e., rotifers and dreissenid veliger larvae) were
+assigned to new functional groups: (1) omnivorous rotifers, (2) predacious rotifers, and (3) dreissenid veligers.","yes","Anika",2017
+"Zhang et al 2021","freshwater",3,1,"taxonomic","Henan, China","field","none",NA,NA,"yes","Anika",2021
+"Erdogan et al 2021","freshwater",3,1,"taxonomic, morphological","All Turkey","field","none",NA,"Phytoplankton separated into taxonomic groups, but the focus was the size structure of phytoplankon, however no size groups were created","yes","Anika",2021
+"Anneville et al 2019","freshwater",3,1,"taxonomic","Lake Geneva, France/Switzerland","field","none",NA,"Taxonomic assemblages of phytoplankton were created based on a similar community structure. hierarchical classification on the new matrix sothat sampling dates could be categorized into various clustersbased upon similarities in phytoplankton assemblage struc-ture. For each of the dominant clus-ters, indicator species were selected based on the IndVal index(Dufrêne and Legendre 1997) using 25% threshold IndValvalue (Dufrêne and Legendre 1997, Souissi et al. 2001).Such collections of indicator species for each cluster made upphytoplankton assemblages.","yes","Anika",2019
+"NA","estuary",3,1,"taxonomic, morphological","Chesapeake Bay, Maryland","field, lab","in situ, experiment","td",NA,"y","Heather",NA
+"Borbee et al 2024","marine",3,1,"taxonomic","Indonesia","field","in situ",NA,"fish trophic groups; 4 regions across Indonesia; mostly talk about top-down, but also mention nutrients as a structuring component","y","Heather",2024
+"Wohlrab et al 2016","marine",1,1,"omics","Scotland","lab","experiment",NA,"250 mL glass flasks; dinoflagellate grazer","y","Heather",2016
+"Sunda and Shertzer 2014","marine",3,1,"physiological","NA","model","in silico",NA,"model based on functional trait hypotheses","y","Heather",2014
+"Rollwagen-Bollens et al 2020","estuary",3,1,"taxonomic, physiological","Columbia River Estuary","field","in situ",NA,NA,"y","Heather",2020
+"Levesque et al 2019","freshwater",1,1,"taxonomic","Nunavik, Quebec, Canada","field","in situ",NA,"also includes viruses and bacteria","y","Heather",2019
+"Spilling et al 2019","marine",3,1,"taxonomic","Chilean coast","lab","experiment",NA,"note that I'm putting incubation when they do not specify between microcosm vs. mesocosm. They call this an enclosure experiment. They don't specifically mention bottom-up but they talk about nutrient limitation shaping communities so I think that counts","y","Heather",2019
+"Fowler et al 2020","marine",1,1,"taxonomic","Northeast US Shelf Long-Term Ecological Research site","lab, model","in silico",NA,NA,"y","Heather",2020
+"Fennel et al 2003","marine",3,1,"morphological","Southern Ocean","model","in silico",NA,NA,"y","Heather",2003
+"Kavagutti et al 2023","freshwater",3,1,"taxonomic","Czech Republic","field","in situ",NA,NA,"y","Heather",2023
+"Muller et al 2021","marine",3,1,"morphological","Svalbard, Arctic Ocean","field, lab","experiment",NA,"this is mostly a bacterial focus, but they mention that two groups include small and large phytos so I think that would count here","y","Heather",2021
+"Zhang et al 2023","marine",3,1,"taxonomic","Ross Ice Shelf Polynya","model","in silico",NA,NA,"y","Heather",2023
+"Yvon-Durocher et al 2015","freshwater",1,1,"morphological","East Stoke, Dorset, United Kingdom","field","experiment",NA,NA,"y","Heather",2015
+"Ortiz et al 2016","marine",3,1,"taxonomic","Fildes Bay, King George Island, Antarctic
+Peninsula","model","in silico",NA,NA,"y","Heather",2016
+"Peura et al 2012","freshwater",3,1,"taxonomic, physiological","southern Finland","field","experiment",NA,NA,"y","Heather",2012
+"Davis et al 2012","freshwater",3,1,"taxonomic, morphological","western basin of Lake Erie","field, lab","in situ, experiment",NA,"they do talk about how nutrients enhance phytoplankton growth but they don't specifically mention bottom-up control","y","Heather",2012
+"Ruckert and Giani 2008","freshwater",3,1,"taxonomic","Belo Horizonte, Minas Gerais State, southeastern Brazil","lab","experiment","bu",NA,"y","Heather",2008
+"Mangolte et al 2022","marine",3,1,"morphological","Gulf stream and North Atlantic current systems","model","in silico",NA,NA,"y","Heather",2022
+"Jing and Liu 2012","estuary, marine",3,1,"taxonomic","Pearl River Estuary and eastern waters of Hong Kong","field","in situ","bu","bacterioplankton study that includes a couple of cyano groups","y","Heather",2012
+"Talaber et al 2018","marine",2,1,"taxonomic","Gulf of Trieste, northern Adriatic Sea","field","in situ","bu","they refer to previous research that has found bu to be most important in this system","y","Heather",2018
+"Deng et al 2023","marine",1,1,"taxonomic","South China Sea and the Luzon Strait","field","experiment",NA,NA,"y","Heather",2023
+"Conte et al 2024","marine",1,1,"taxonomic","Gulf of Alaska","model","in silico",NA,"they definitely lean more heavily on bottom-up, but they bring up grazing a lot so don't think they do a good job describing bottom-up as more important","y","Heather",2024
+"Zhao et al 2013","freshwater",3,1,"taxonomic","Liuxihe National Forest Park, Guangdong Province, China.","field","experiment","td","but they have a lot of caveats that their experimental design may explain why bu wasn't more important, as is typically the case in warmer freshwater ecosystems","y","Heather",2013
+"Blottiere et al 2017","freshwater",3,1,"morphological","Equipex Planaqua, St-Pierre-les-Nemours, France","field","experiment",NA,"the focus here was how td and bu affected rotifer populations, but this paper met all the other criteria and discusses effect on phytoplankton functional groups. ALSO, they note that fish were added, but were not studied and subsequently died at some point during the experiment","y","Heather",2017
+"Karuza et al 2016","marine",3,1,"morphological","Mar Piccolo, south-eastern Italy","field","in situ",NA,NA,"y","Heather",2016
+"Fernández‐Aláez et al 2004","freshwater",3,1,"taxonomic","Lake Sentiz, north-west Spain","field","experiment",NA,NA,"y","Heather",2004
+"Gsell et al 2016","freshwater",3,1,"taxonomic","Lake Müggelsee, Germany","field","in situ","bu",NA,"y","Heather",2016
+"Chung et al 2009","estuary",3,1,"taxonomic","Tan-Shui River","field","in situ","td","""Pre vi ous stud ies have demon strated
+that bot tom-up con trol pro cesses and biogeochemical pro -
+cesses in coastal and es tu ary system seldom con trol the
+growth of many planktons, includ ing bacte ria (Shiah et al.
+2006), pro to zo ans (Sherr and Sherr 2002) and copepods
+(Calbet 2001; Calbet and Saiz 2005).""","y","Heather",2009
+"To et al 2024","freshwater",3,1,"morphological","NA","model","in silico",NA,"small phytos limited more by td than large phytos; note that the model was run for 10 years but only the last year of the run was used for analysis","y","Heather",2024
+"Ozkan et al 2014","freshwater",3,1,"taxonomic","Denmark","field","in situ",NA,NA,"y","Heather",2014
+"Taylor et al 2006","marine",2,1,"taxonomic","Long Island embayments","field, lab","in situ, experiment",NA,NA,"y","Heather",2006
+"Noges et al 1998","freshwater",3,1,"taxonomic","Lake Vortsjarv, central Estonia","field","in situ","bu",NA,"y","Heather",1998
+"Gonzalez 2000","freshwater",3,1,"taxonomic","El Andino Reservoir, Venezuela","field","experiment",NA,NA,"y","Heather",2000
+"Diaz et al 2008","estuary",3,1,"taxonomic, morphological","northwestern Mediterranean Sea","field","in situ",NA,NA,"y","Heather",2008
+"McQuatters-Gollop and Vermaat 2011","marine",2,1,"taxonomic","North Atlantic Oscillation, North Sea","field","in situ",NA,NA,"y","Heather",2011
+"Gonzalez et al 2009","marine",3,1,"taxonomic","Humboldt Current System off Chile","field","in situ",NA,NA,"y","Heather",2009
+"Brito et al 2015","estuary",3,1,"taxonomic","Tagus Estuary, west coast of Europe","field","in situ",NA,NA,"y","Heather",2015
+"Pikula et al 2024","freshwater",3,1,"taxonomic","northeast Poland","field","in situ",NA,NA,"y","Heather",2024
+"Roberts et al 2003","marine",3,1,"taxonomic","Trondheimsfjord, Norway","field","experiment",NA,NA,"y","Heather",2003
+"Salcher et al 2007","freshwater",3,0,"physiological","Piburger See, Austria","field","experiment",NA,"physiological and -omics: flow cyt for DNA content; incubation study","y","Arianna",2007
+"Mesquita et al 2024","freshwater",3,1,"taxonomic, morphological","Camorim Reservoir, Rio de Janeiro, Brazil","field","in situ","bu","trophic state not directly mentioned","y","Arianna",2024
+"Detmer et al 2022","freshwater",3,0,"taxonomic","Lake Shelbyville, central Illinois, USA","field","in situ",NA,NA,"y","Arianna",2022
+"Solic et al 2022","marine",3,1,"taxonomic, morphological","Adriatic Sea","field, model","in situ",NA,NA,"y","Arianna",2022
+"Moran et al 2018","marine",3,1,"taxonomic, morphological","Gijón/Xixón, Spain","field","experiment",NA,NA,"y","Arianna",2018
+"Thorpe et al 2022","marine",3,1,"taxonomic, physiological","North Sea","model","in silico",NA,NA,"y","Arianna",2022
+"Simek et al 2003","freshwater",3,0,"taxonomic, morphological","Rimov Reservoir, South Bohemia","field","experiment",NA,"experiment flag included due to grazing experiments","y","Arianna",2003
+"Yuan and Pollard 2018","freshwater",3,1,"taxonomic","continental US","model","in silico",NA,"this is based on field data but ultimately they made a model","y","Arianna",2018
+"Grattepanche and Katz 2020","marine",3,1,"omics","UConn Avery Point, Connecticut, USA","field","experiment",NA,NA,"y","Arianna",2020
+"Boras et al 2015","marine",3,1,"omics","Blanes Bay, Spain","field","in situ","bu","""zooplankton"" is predatory protists","y","Arianna",2015
+"Luo et al 2018","marine",3,1,"taxonomic","Erhai Lake, Yunnan Plateau, China","field","experiment",NA,NA,"y","Arianna",2018
+"Matsuzaki et al 2018","freshwater",3,1,"taxonomic","Lake Kasumigaura, Japan","model","in silico","bu",NA,"y","Arianna",2018
+"Kenny et al 2009","marine",3,1,"taxonomic","North Sea","field","in situ",NA,"started td then went bu","y","Arianna",2009
+"Prowe et al 2012","marine",3,1,"taxonomic, physiological","global","model","in silico","bu",NA,"y","Arianna",2012
+"McMahon et al 2012","freshwater",3,1,"taxonomic","near Tampa, FL, USA","lab","experiment",NA,NA,"y","Arianna",2012
+"Liu et al 2023","freshwater",3,1,"taxonomic","25 reservoirs near Dongguan City, China","field","in situ",NA,NA,"y","Arianna",2023
+"Gamito et al 2019","marine",3,1,"taxonomic","Foz do Almargem and Salgados lagoons, Portugal","field","in situ","bu",NA,"y","Arianna",2019
+"Auer et al 2004","freshwater",3,1,"taxonomic","55 lakes in Northern Germany","field","in situ",NA,NA,"y","Arianna",2004
+"Diniz and Moura 2022","freshwater",3,1,"taxonomic","Cursai reservoir, northeastern Brazil","field","experiment",NA,NA,"y","Arianna",2022
+"Ward et al 2012","marine",3,1,"taxonomic, physiological","global ocean","model","in silico",NA,NA,"y","Arianna",2012
+"Sailley et al 2013","marine",3,1,"physiological","global ocean","model","in silico",NA,NA,"y","Arianna",2013
+"Roelke 2000","marine",3,1,"physiological","mathematical model w/ no domain","model","in silico",NA,"only one copepod grup modeled","y","Arianna",2000
+"Sabbagh et al 2020","marine",3,1,"physiological","Red Sea","field","in situ","td","no zoops; viruses are td control","y","Arianna",2020
+"Hashioka et al 2013","marine",3,1,"taxonomic, physiological","global","model","in silico",NA,"only 2 zoop functional groups but still a difference","y","Arianna",2013
+"Jurgens and Jeppesen 2000","freshwater",1,1,"morphological, physiological","Lake Søbygård, Denmark","field","in situ, experiment","td","only 2 phyto groups = prokaryotic & eukaryotic autotrophic picoplankton ; community grouped by ecological position in the food web (related to size). The groups are: phagotrophic protozoans (ciliates, HNF), heterotrophic bacteria (differentiated into normal morphotypes and filamentous forms) and autotrophic picoplankton (differentiated into prokaryotic and eukaryotic cells, according to size, shape and presence of a nucleus.).","include","Megan",2000
+"Ogorelec et al 2021","freshwater",1,1,"morphological","Upper Lake Constance, central Europe","field","experiment",NA,"2 phyto groups split by size (proxy for edibility to large daphniids); mostly discusses total phytoplankton biomass; experiment manipulates fish, which impacts zooplankton, then they draw conclusions about how particular zooplankton impact phytoplankton biovolume","yes","Megan",2021
+"Cozar et al 2003","freshwater",3,1,"morphological","Laguna Iberá and Laguna Galarza, Esteros del Iberá, Corrientes, Argentina","field","in situ",NA,"groups = size classes; top-down more important in Laguna Iberá; bottom-up more important in Laguna Galarza","include","Megan",2003
+"Makareviciute-Fichtner et al 2024","marine",3,1,"taxonomic, physiological","Kiel Fjord, Germany","field","experiment",NA,"measured pico-, nano- and microplankton; phyto community composition data in supplement (taxonomic groups: diatom, ciliate, dinoflagellate, chlorophytes, and picoplankton), results highlight differences between silicifying (diatoms) and non-silicifying (all other) groups","include","Megan",2024
+"Sanderson and Frost 1996","freshwater",3,1,"taxonomic","Trout and Crystal bogs, North Temperate Lakes Long-Term Ecological Research Site, Vilas County, Wisconsin","field","experiment",NA,"focuses on 1 species of phytoplankton (the dinoflagellate Peridinium limbatum), but also evaluated abundances of other major phytoplankton groups based on pigment concentration using HPLC. Top-down vs bottom-up control on phytoplankton is a primary focus of this study. They found that neither resource availability nor zooplankton grazing were dominant controlling mechanisms for dinoflagellate populations in either lake.","include","Megan",1996
+"Pound et al 2020","freshwater",1,1,"omics","Lake Tai (Taihu) China","field","in situ",NA,"- topic: viral control of phytoplankton bloom succession (top-down control) 
+- focus is on viral community, but does separate cyanobacteria vs eukaryotic hosts (mainly discusses viruses that infect microsystis vs non-microsystis viruses). Transcriptomics used to identify virus and population phylogenetic groups. co-occurrence analyses between viral and host transcript abundances used to infer ecological linkages, but they do not report phytoplankton biomass, pigment concentrations, or group-specific cell counts.","include","Megan",2020
+"Chenillat et al 2013","marine",2,1,"morphological","California Current System","model","in silico",NA,"2 phytoplankton size classes: small and large (PS, representing non-siliceous phytoplankton; PL, representing diatoms); top-down not discussed explicitly","include","Megan",2013
+"Olivier et al 2020","marine",2,1,"taxonomic, morphological","North Water Polynya, Baffin Bay, Arctic Ocean","field","in situ",NA,"bottom-up control of sea ice -> phytoplankton production -> bivalve growth; focus is on molluscs (measured growth variations and Ba/Ca ratios in Mollusc shells), but also measured Production rates of small (0.7–5 µm) and large ( ≥ 5 µm) phytoplankton cells; Cells (greater than 2 µm) were identified to the lowest possible taxonomic level; RESULTS: found decrease in both small and large phyto production, but no clear change in phytoplankton assemblage from 2005-2010","include","Megan",2020
+"Gaxiola-Castro et al 2008","marine",3,1,"taxonomic, morphological","California Current, off Baja California","field","in situ",NA,"reports dinoflagellate and diatom abundance (fig 2d). results also mention picoplankton abundance (<5um) and large (>5 um) phytoplankton abundance. Primary conclusions focus on chl-a anomalies.","include","Megan",2008
+"Frau et al 2017","freshwater",1,1,"morphological, physiological","El Mirador Lake, Argentina","field","in situ, experiment","td","Very strong fit for our study. phytoplankton taxa categorized into 10 morpho-functional groups considering trophic habits, mobility, cell-protection, cellular organization (single-cell vs colonial); size used to assess palatability","include","Megan",2017
+"Balkic et al 2024","freshwater",1,1,"taxonomic","Lake Josava, Croatia","field","in situ",NA,NA,"include","Megan",2024
+"de Gamiz-Zearra et al 2024","marine",3,1,"morphological","Bay of Biscay, French continental shelf and Cantabrian Sea","model","in silico","bu","2 phyto groups: small and large","include","Megan",2024
+"Frau et al 2022","freshwater",2,1,"taxonomic, morphological, physiological","Irupé Lake and Mirador Lake, Argentina","field","in situ",NA,"phytoplankton classified in Reynolds Functional Groups (RFG) - classification includes phylogenetic, phenological, morphological, and physiological factors; They didn't measure grazers, but say they ""can assume that grazing was not a relevant controlling factor"" based on other studies","include","Megan",2022
+"Brucet et al 2017","freshwater",1,1,"morphological","Turkey","field","in situ",NA,"size diversity and size evenness","include","Megan",2017
+"Abu Noman et al 2019","marine",2,1,"taxonomic, morphological","East China Sea","field","in situ",NA,"groups: nano-phytoplankton, diatom, dinoflagellates, tintinnids (zoop)","include","Megan",2019
+"Goncalves-Araujo et al 2018","marine",3,1,"taxonomic, morphological","southern Brazilian continental shelf","field","in situ",NA,"relative abundance of 10 phytoplankton groups contributing to total Chl a (sum of monovinyl- and divinyl-Chl a) biomass was calculated from pigment data; phyto taxonomic groups also identified by microscope and classified into taxonomic groups: cyanobacteria, haptophytes, heterokonts (mostly diatoms), cryptophytes, chlorophytes, euglenophytes, dinophytes, and inclusively the protozooplankton ciliates","include","Megan",2018
+"Gutierrez-Rodriguez et al 2011","marine",3,1,"taxonomic","Blanes Bay, NW Mediterranean","field","experiment",NA,"bulk growth and grazing rates from dilution experiment; HPLC pigment analysis; Phytoplankton apparent growth rates were estimated from changes in pigment concentrations. Chl a, Fucoxanthin, 190-hexanoyloxyfucoxanthin, chl b, zeaxanthin and 190-butanoyloxyfucoxanthin were used as diagnostic pigments for bulk phytoplankton, Bacillariophyta, Prymnesiophyceae, Prasinophyceae, Synechococcus and Pelagophyceae respectively.  RESULTS: Micro-zooplankton grazing rates were strongly correlated with phytoplankton growth rates","include","Megan",2011
+"Fiechter and Moore 2009","marine",3,1,"morphological","northwestern coastal Gulf of Alaska","model","in silico",NA,"model has 2 phytoplankton size classes (nanophytoplankton (<20 um) and diatoms (>20 um))","include","Megan",2009
+"Frau and Gutierrez 2024","freshwater",1,1,"taxonomic","Quillá Lake, Argentina","lab","experiment",NA,"phytoplankton groups: Cyanobacteria, Chlorophyceae, Cryptophyceae, Bacillariophyceae, Euglenophyceae, and Dinophyceae","include","Megan",2024
+"Jiang et al 2012","marine",1,1,"taxonomic","Xiangshan Bay, China","field","in situ",NA,NA,"include","Megan",2012
+"Chabert et al 2024","marine",2,1,"morphological","South Senegalese Upwelling Sector","model","in silico",NA,"model has 2 phytoplankton size classes","y","Megan",2024
+"Calero et al 2015","freshwater",3,1,"taxonomic","AV lagoon, Albufera de València Natural Park, eastern Spain","field","in situ","td","wetland (very shallow: 0.2 +/- 0.05m); td_vs_bu: unclear, abstract presumes top-down, but the discussion confused me. it says: ""The plankton composition of the inflow ...shifted toward a community with high efficiency in resource use and complex trophic relationships ...(towards a top-down control)"" ... ""negative correlation between cladocerans and phytoplankton within the FWSCWs might indicate a top–down control over microalgae, besides the bottom–up control shown by the positive correlation between water nutrients and phytoplankton""","include","Megan",2015
+"Challouf et al 2017","marine",NA,NA,NA,"Monastir Bay (eastern coast of Tunisia",NA,NA,"bu",NA,"include","Megan",2017
+"Frau et al 2015","freshwater",3,1,"taxonomic, morphological","El Mirador Lake","field","in situ",NA,"Top down and bottom up focuses","y","Britt",2015
+"Helminen and Sarvala 1997","freshwater",3,1,"physiological","Lake Pyhäjärvi, Finland","field","in situ",NA,NA,"Yes","Emmy",1997
+"Vijayaraj et al 2022","freshwater",3,1,"physiological","NA, mesocosm plankton sourced from Lake Bannsee and Lake Klostersee","lab","experiment",NA,NA,"Yes","Emmy",2022
+"Caceres et al 2016","marine",3,1,"physiological","Cayos Cochinos and Media Luna reef, Caribbean Sea","field, model","in silico",NA,"total food web focus for the model, so plankton are there but so is everything else","Yes","Emmy",2016
+"Frau et al 2021","freshwater",2,1,"taxonomic, physiological","Irupé Lake and Mirador Lake, Argentina","field","in situ","bu","functional responses were measured via alpha and beta diversity of the phytoplankton","Yes","Emmy",2021
+"Ka et al 2012","freshwater",1,1,"taxonomic","NA, mesocosm zooplankton (7) and naturally and unnaturally sourced plankton etc. representative of the Senegal River Hydrosystem","lab","experiment","td","tested feeding of zoop on different nutrients, including diff phyto. Interesting td","Yes","Emmy",2012
+"Li et al 2022","freshwater",3,1,"taxonomic, omics","near the middle lower Yangtze River, China.","field","in situ","bu","linked phyto to trophic state, looked at diversity.","Yes","Emmy",2022
+"Vascotto et al 2024","marine",2,1,"taxonomic, morphological","Gulf of Trieste, Adriatic Sea near Slovenia","field","in situ","bu","finally a paper that doesnt focus on zoop! links phyto to environmental parameters, seasonailty, etc. more than just chla","Yes","Emmy",2024
+"Villar-Argaiz et al 2018","freshwater",3,1,"taxonomic","la Caldera lake, Sierra Nevada, Spain. and Los Cantaros lake, Nahuel Huapi NP, Argentina.","field","experiment",NA,"good experimental paper, measures td and bu effects on phyto.","Yes","Emmy",2018
+"Reavie et al 2025","freshwater",3,1,"taxonomic","Great Lakes, USA and Canada","field","in situ","bu","interesting and also when beyond taxonomy to do some trait based analyses of the phyto","Yes","Emmy",2025
+"Simek et al 2014","freshwater",3,1,"taxonomic","Rimov reservoir, South Bohemia","field","in situ",NA,"focused on the bacterioplankton fraction, but also had insight into phyto","Yes","Emmy",2014
+"An et al 2024","marine",3,1,"taxonomic","western equatorial Pacific Ocean","field","in situ",NA,"comprehensive","Yes","Emmy",2024
+"Somogyi et al 2010","freshwater",2,1,"taxonomic, omics","Lake Ferto, Neusiedlersee (Hungary)","field","in situ","bu","links phyto to different sampling sites and conditions","Yes","Emmy",2010
+"Daly et al 2019","freshwater",2,1,"taxonomic","northwestern New Brunswick, Canada","field","in situ","bu","used hplc and sediment core analysis to do a historical record of phyto in the lakes, and link it to historical environmental conditions.","Yes","Emmy",2019
+"Worm et al 2000","marine",3,1,"taxonomic","Maasholm field station, Institut für Meereskunde, Schlei Fjord, Western Baltic Sea, Germany","field, lab","experiment",NA,"had species abundance and composition. for grazers they mention fish and other higher organisms, not sure about zoop.","Yes","Emmy",2000
+"Hrycik and Stockwell 2021","freshwater",3,1,"taxonomic","Shelburne Pond, VT, USA","field, lab","experiment","bu",NA,"Yes","Emmy",2021
+"Arhonditsis et al 2007","estuary",2,1,"taxonomic","Neuse River Estuary, NC, USA","model","in silico","bu","used hplc data to differentiate taxa, then linked functional groups to abiotic parameters in the model","Yes","Emmy",2007
+"de Magalhaes et al 2021","freshwater",3,1,"morphological","Serra da Mesa Reservoir, central-western Brazil, and the Três Marias Reservoir, southeast Brazil","field","in situ","bu","used morphology based functional groups, kinda focused on the biovolumes but still distinguished them","Yes","Emmy",2021
+"Hambright et al 2007","freshwater",3,1,"morphological","Cornell University Experimental Ponds Facility.","field, lab","experiment",NA,"sorted into broad taxa, but do delineate effects of grazing on certain taxa such as cyano.","Yes","Emmy",2007
+"Ben Othman et al 2018","estuary",2,1,"taxonomic","Thau Lagoon, France, and the Bizerte Lagoon, Tunisia","field, lab","experiment","bu",NA,"Yes","Emmy",2018
+"Moss et al 2003","freshwater",3,1,"taxonomic, morphological","University of Liverpool Botanic Gardens, Ness on the Wirral Peninsula, UK","lab","experiment",NA,NA,"Yes","Emmy",2003
+"Simek et al 2008","freshwater",3,1,"taxonomic, morphological","Rimov reservoir, South Bohemia, Czech Republic","field","in situ",NA,NA,"Yes","Emmy",2008
