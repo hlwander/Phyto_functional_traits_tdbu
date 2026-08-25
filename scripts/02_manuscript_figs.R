@@ -1,6 +1,7 @@
 #Script for creating all manuscript figures
 
-pacman::p_load(dplyr, tidyverse, ggplot2, patchwork, colorblindcheck) #ggpubr
+pacman::p_load(dplyr, tidyverse, ggplot2, patchwork, colorblindcheck, 
+               DiagrammeR, DiagrammeRsvg, rsvg, vcd) #ggpubr
 
 #read in cleaned data
 td_bu_final <- read.csv("data/final_td_bu_df.csv")
@@ -47,12 +48,12 @@ p2 <- ggplot(fg_eco_sum |> filter(!ecosystem %in% "aquatic" & !is.na(ecosystem))
         legend.position = "none")
 
 # Figure 1
-combined <- p1 / p2 +
+fig1 <- p1 / p2 +
   plot_annotation(tag_levels = "A") &
   theme(plot.tag.location = "panel",       
         plot.tag.position  = c(-0.06,1), 
         plot.tag = element_text(size = 14, face = "bold")) 
-#ggsave("figures/phyto_func_group_combined.jpg", combined, width = 5, height = 6)
+#ggsave("figures/phyto_func_group_combined.jpg", fig1, width = 5, height = 6)
 
 #Fig 2: stacked bar plot of functional group types across ecosystems
 fg_type_eco <- td_bu_final |>
@@ -178,3 +179,65 @@ ggplot(td_eco_prop |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
         legend.position = "top",
         legend.direction = "horizontal")
 #ggsave("figures/phyto_func_group_process_emphasis_by_ecosystem_prop.jpg", width = 4, height = 3)
+
+#------------------------------------------------------------------------------#
+#statistical tests for each research question 
+
+
+
+# ---- RQ1: ecosystem x process emphasis (secondary check) ----
+eco_proc_mat <- td_eco_df |>
+  filter(!ecosystem %in% "aquatic", !is.na(ecosystem)) |>
+  tidyr::pivot_wider(names_from = importance_td_vs_bu, values_from = n, values_fill = 0) |>
+  tibble::column_to_rownames("ecosystem") |>
+  as.matrix()
+
+set.seed(123)
+fisher.test(eco_proc_mat, simulate.p.value = TRUE, B = 10000) # p = 0.3844
+DescTools::CramerV(eco_proc_mat)                              # 0.111
+
+# ---- RQ2: functional group type x ecosystem ----
+fg_eco_table <- xtabs(~ ecosystem + func_group_type, data = stats_df)
+
+set.seed(123)
+fisher.test(fg_eco_table, simulate.p.value = TRUE, B = 10000) # p = 0.4985
+DescTools::CramerV(fg_eco_table)                              # 0.084
+
+# ---- RQ3: functional group type x process emphasis ----
+proc_fg_table <- xtabs(~ func_group_type + importance_td_vs_bu,
+                       data = filter(stats_df, importance_td_vs_bu != "NA"))
+
+set.seed(123)
+fisher.test(proc_fg_table, simulate.p.value = TRUE, B = 10000) # p = 0.9529
+DescTools::CramerV(proc_fg_table)                              # 0.059
+
+#no significant associations!!
+
+#------------------------------------------------------------------------------#
+# flowchard Figure 1
+prisma <- grViz("
+digraph prisma {
+  graph [layout = dot, rankdir = TB, nodesep = 0.4, ranksep = 0.5]
+  node [shape = box, style = filled, fillcolor = '#EFEFEF', fontname = Helvetica, fontsize = 11, width = 3]
+
+  A [label = 'Records identified through\\nWeb of Science search\\n(n = 855)']
+  B [label = 'Duplicate records removed\\n(n = 2)']
+  C [label = 'Records screened\\n(title/abstract)\\n(n = 853)']
+  D [label = 'Records excluded\\n(n = 313)']
+  E [label = 'Full-text articles\\nassessed for eligibility\\n(n = 540)']
+  F [label = < Full-text articles excluded<br/>(n = 287)<br/>
+              <br align='left'/><B>Reasons:</B>
+              <br align='left'/>1) Literature review or meta-analysis
+              <br align='left'/>2) No phytoplankton in study
+              <br align='left'/>3) No phytoplankton functional groups assessed>]
+  G [label = 'Studies included\\nin review\\n(n = 253)', fillcolor = '#9DC5BB']
+
+  A -> B -> C
+  C -> D
+  C -> E -> G
+  E -> F
+}
+")
+prisma
+
+prisma |> export_svg() |> charToRaw() |> rsvg_png("figures/flow_chart.png", width = 1400)
