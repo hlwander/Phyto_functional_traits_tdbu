@@ -220,10 +220,10 @@ digraph prisma {
   graph [layout = dot, rankdir = TB, nodesep = 0.4, ranksep = 0.5]
   node [shape = box, style = filled, fillcolor = '#EFEFEF', fontname = Helvetica, fontsize = 11, width = 3]
 
-  A [label = 'Records identified through\\nWeb of Science search\\n(n = 855)']
-  B [label = 'Duplicate records removed\\n(n = 2)']
-  C [label = 'Records screened\\n(title/abstract)\\n(n = 853)']
-  D [label = 'Records excluded\\n(n = 313)']
+  A [label = 'Papers identified through\\nWeb of Science search\\n(n = 855)']
+  B [label = 'Duplicate papers removed\\n(n = 2)']
+  C [label = 'Papers screened\\n(title/abstract)\\n(n = 853)']
+  D [label = 'Papers excluded\\n(n = 313)']
   E [label = 'Full-text articles\\nassessed for eligibility\\n(n = 540)']
   F [label = < Full-text articles excluded<br/>(n = 287)<br/>
               <br align='left'/><B>Reasons:</B>
@@ -238,6 +238,4 @@ digraph prisma {
   E -> F
 }
 ")
-prisma
-
 prisma |> export_svg() |> charToRaw() |> rsvg_png("figures/flow_chart.png", width = 1400)

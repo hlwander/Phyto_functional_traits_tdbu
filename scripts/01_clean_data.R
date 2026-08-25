@@ -43,7 +43,7 @@ rayyan_papers_clean |> filter(!str_detect(study, valid_pattern)) |>
   dplyr::select(study) |> print(n = 34)
 #these are okay - just variations in author names
 
-#count the number of double-reviewed studies (n=116 papers)
+#count the number of double-reviewed studies (n=133 papers)
 rayyan_papers_clean |> 
   count(study, name = "n") |> 
   arrange(desc(n)) |>
@@ -319,7 +319,7 @@ rayyan_papers_include_final <- rayyan_papers_include |>
                                                "mass-balance trophic model","modelling"),
                              "model", study_type)))))) |>
   mutate(experimental_design = ifelse(experimental_design %in% c("in situ, mesocosm","in situ, microcosm",
-                                                                 "mesocosm; in situ","in-situ, incubation",
+                                                                 "in-situ, incubation",
                                                                  "in situ, incubation","incubation, in situ",
                                                                  "in situ; mesocosm","in situ; microcosm",
                                                                  "in situ and incubations on ship", "outdoor mesocosm",
@@ -327,8 +327,9 @@ rayyan_papers_include_final <- rayyan_papers_include |>
                                       "in situ, experiment",
                                 ifelse(experimental_design %in% c("in vitro","microcosm, mesocosm","mescosm","microcosm",
                                                                   "mesocosm","microcosm?, incubation", "microcosm/incubation",
-                                                                  "mesocosm (field enclosure)","incubation"), "experiment",
-                                ifelse(experimental_design %in% c("in situ / in silico", "in situ, insilico",
+                                                                  "mesocosm (field enclosure)","incubation","mesocosm, incubation"), 
+                                       "experiment",
+                                ifelse(experimental_design %in% c("in situ / in silico", "in situ, insilico", "in situ; in silico",
                                                                          "in silico based on in situ data cruises included in study"),
                                        "in situ, in silico",
                                 ifelse(experimental_design %in% c("mesocosm / barcoding"), "experiment, omics",
@@ -347,7 +348,7 @@ rayyan_papers_include_final <-  rayyan_papers_include_final |>
   select(study, year, ecosystem, top_bottom_both, func_group_type, 
          study_type, experimental_design, importance_td_vs_bu) 
 
-#export double-reviewed studies from cleaned df for checking (n=78)
+#export double-reviewed studies from cleaned df for checking (n=77)
 repeated_studies <- rayyan_papers_include_final |>
   group_by(study) |>
   summarise(n_reviewers = n(), .groups = "drop") |>
@@ -357,7 +358,7 @@ repeated_studies <- rayyan_papers_include_final |>
 compare_cols <- c("ecosystem", "top_bottom_both", "func_group_type",
                   "study_type", "experimental_design", "importance_td_vs_bu")
 
-double_reviewed_papers <- rayyan_papers_include_final |> #n=76
+double_reviewed_papers <- rayyan_papers_include_final |>
   filter(study %in% repeated_studies) |>
   arrange(study) |>
   group_by(study) |>

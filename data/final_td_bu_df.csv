@@ -2,7 +2,7 @@
 "Abu Noman et al 2019",2019,"marine",3,"taxonomic, morphological","field","in situ","both"
 "Acevedo-Trejos et al 2018",2018,"marine",3,"morphological","field, model","in situ, in silico","both"
 "Aksnes and Lie 1990",1990,"freshwater",3,"taxonomic, physiological","model","in silico","both"
-"Almeda et al 2018",2018,"marine",1,"taxonomic","field, lab","mesocosm, incubation",NA
+"Almeda et al 2018",2018,"marine",1,"taxonomic","field, lab","experiment",NA
 "Alvarez-Cobelas et al 2006",2006,"freshwater",3,"physiological","field","in situ","td"
 "Amorim et al 2019",2019,"freshwater",1,"morphological, physiological","lab","experiment",NA
 "An et al 2024",2024,"marine",3,"taxonomic","field","in situ","both"
@@ -28,7 +28,7 @@
 "Challouf et al 2017",2017,"marine",3,"taxonomic","field","in situ","both"
 "Chang et al 2010",2010,"freshwater",3,"taxonomic","field","in situ","both"
 "Chen et al 2008",2008,"freshwater",3,"taxonomic, omics","field","in situ","both"
-"Chen et al 2023",2023,"marine",3,"taxonomic, morphological","field; model","in situ; in silico","both"
+"Chen et al 2023",2023,"marine",3,"taxonomic, morphological","field; model","in situ, in silico","both"
 "Chenillat et al 2013",2013,"marine",2,"morphological","model","in silico",NA
 "Chislock et al 2019",2019,"freshwater",3,"taxonomic, morphological","field","experiment","both"
 "Christaki et al 2017",2017,"marine",3,"taxonomic, omics","field","in situ","both"
