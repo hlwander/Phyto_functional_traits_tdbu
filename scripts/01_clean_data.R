@@ -1,9 +1,9 @@
 # Script to bring in reviewed Rayyan articles and clean spreadsheet
-# n = 540 full-text articles screened; 256 included 
+# n = 540 full-text articles screened; 253 included 
 
 #load in packages
 if (!require("pacman")) {install.packages("pacman") }
-pacman::p_load(readxl, dplyr, tidyverse, ggpubr, stringr, ggplot2, patchwork)
+pacman::p_load(readxl, dplyr, tidyverse, stringr)
 
 # Path to your Excel file
 file_path <- "data/TD_BU_data_extraction.xlsx"
@@ -195,14 +195,7 @@ include_disagreements <- rayyan_papers_clean |>
     include_responses = paste(unique(include), collapse = ", "),
     .groups = "drop") |>
   filter(n_reviewers > 1 & n_unique_decisions > 1)
-#Still need to fix:
-#Charalampous et al 2024
-#Kong et al 2020
-#Lemmens et al 2018
-#Wang et al 2024
-#Zhang et al 2021
-#do Nascimento Filho et al 2019
-#d’Oultremont and Gutierrez 2002
+#note that the Zhang et al 2021 disagreement is because they published 2 papers that year (one is included and the other not)
 
 #### read in references and check that the keeps are all accounted for ####
 refs <- read.csv("data/articles.csv") 
@@ -242,24 +235,11 @@ rayyan_study_yes <- rayyan_papers_clean |>
 
 #filter papers that have at least one yes
 rayyan_papers_include <- rayyan_papers_clean |>
-  filter(study %in% rayyan_study_yes$study) #,
-        # !study %in% c("Charalampous et al 2024")) #I think this one will be dropped
+  filter(study %in% rayyan_study_yes$study) 
          
-#drop the Zhang et al 2021 and 2023 papers (n=4 papers)
+#drop the Zhang et al 2021 paper (n=2 papers w/ same pub year + first author)
 rayyan_papers_include <- rayyan_papers_include[!(rayyan_papers_include$study=="Zhang et al 2021" &
                                   rayyan_papers_include$include=="no"),]
-
-rayyan_papers_include <- rayyan_papers_include[!(rayyan_papers_include$study=="Zhang et al 2023" &
-                                                   rayyan_papers_include$include %in% c("n","maybe/exclude")),]
-
-#studies that need to be checked:
-# Almeda et al 2018 (Megan)
-# Garcia-Gomez et al 2020 (Britt?) --> isn't OTU classification an omics approach?
-
-#discrepancies
-# Kong et al 2020 --> yes (?)
-# Lemmens et al 2018 --> yes (?)
-
 
 #### clean up the spreadsheet cols of interest ####
 rayyan_papers_include_final <- rayyan_papers_include |>
@@ -321,7 +301,7 @@ rayyan_papers_include_final <- rayyan_papers_include |>
                                                           "Taxonomic, physiological (resistance to a heat wave)",
                                                           "Taxonomic, physiological","Taxonomic / physiology"),
                                    "taxonomic, physiological",
-                            ifelse(func_group_type %in% c("taxonomic, omics","taxonomic / omics"), 
+                            ifelse(func_group_type %in% c("taxonomic, omics","taxonomic / omics", "taxonomic and omics"), 
                                    "taxonomic, omics",
                             ifelse(func_group_type %in% c("Morphological, omics"), "morphological, omics",
                                    func_group_type))))))))))) |>
@@ -364,8 +344,8 @@ rayyan_papers_include_final <- rayyan_papers_include |>
 #add year and drop some cols
 rayyan_papers_include_final <-  rayyan_papers_include_final |>
   mutate(year = as.numeric(str_extract(study, "\\d{4}$"))) |>
-  select(study, year, ecosystem, top_bottom_both, func_group_type, location, 
-         study_type, experimental_design, importance_td_vs_bu, include) #dopr include once I am sure they are all yes
+  select(study, year, ecosystem, top_bottom_both, func_group_type, 
+         study_type, experimental_design, importance_td_vs_bu) 
 
 #export double-reviewed studies from cleaned df for checking (n=78)
 repeated_studies <- rayyan_papers_include_final |>
@@ -374,167 +354,24 @@ repeated_studies <- rayyan_papers_include_final |>
   filter(n_reviewers > 1) |>
   pull(study)
 
-spreadsheet_to_check <- rayyan_papers_include_final |> #n=76
+compare_cols <- c("ecosystem", "top_bottom_both", "func_group_type",
+                  "study_type", "experimental_design", "importance_td_vs_bu")
+
+double_reviewed_papers <- rayyan_papers_include_final |> #n=76
   filter(study %in% repeated_studies) |>
-  arrange(study) 
+  arrange(study) |>
+  group_by(study) |>
+  mutate(review_match = if_else(
+      if_all(all_of(compare_cols), ~ n_distinct(.x, na.rm = FALSE) == 1),
+      "match",
+      "manually check")) |>
+  ungroup()
 #write.csv(spreadsheet_to_check, "data/papers_w_multiple_reviewers.csv", row.names = F)
+#NOTE - make sure all rows say "match before proceeding
 
-#export df with the single-reviewed papers
-#single_reviewed_for_checking <- rayyan_papers_include_final |>
-#  dplyr::select(colnames(spreadsheet_to_check)) |>
-#  filter(!study %in% spreadsheet_to_check$study) |> 
-#  mutate(reviewer = factor(reviewer, levels = c("Ewaldo","Isabelle","Emmy","Anika",
-#                                                "Heather","Arianna","Britt","Megan")))
-#write.csv(single_reviewed_for_checking, "data/papers_w_one_reviewer.csv", row.names = F)
-
-#------------------------------------------------------------------------------#
-#### FIGURES ####
-year_eco_sum <- rayyan_papers_include_final |>
-  filter(!is.na(ecosystem)) |>
-  mutate(ecosystem = str_replace_all(ecosystem, ";", ",")) |>
-  separate_rows(ecosystem, sep = ",") |>
-  mutate(ecosystem = str_trim(ecosystem)) |> #split ecosystem into multiple rows when applicable 
-  group_by(year, ecosystem) |>
-  summarise(n = n(), .groups = "drop") 
-
-fg_eco_sum <- rayyan_papers_include_final |>
-  filter(!is.na(ecosystem)) |>
-  mutate(ecosystem = str_replace_all(ecosystem, ";", ",")) |>
-  separate_rows(ecosystem, sep = ",") |>
-  mutate(ecosystem = stringr::str_trim(ecosystem)) |>
-  distinct(study, ecosystem, .keep_all = TRUE) |>  # keeps first instance only
-  group_by(ecosystem) |>
-  summarise(n = n(), .groups = "drop") 
-
-#Historical progression of use of functional groups across ecosystems
-p1 <- ggplot(year_eco_sum |> filter(!ecosystem %in% "aquatic"),
-             aes(x = year, y = n, color = ecosystem)) +
-  geom_line(size = 1) + geom_point() + theme_bw() +
-  labs(x = "", y = "Number of studies", color = "") +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        legend.position = "top",
-        legend.direction = "horizontal",
-        legend.box.spacing = unit(0.001, "cm"))
-
-#total number of studies in each ecosystem
-p2 <- ggplot(fg_eco_sum |> filter(!ecosystem %in% "aquatic"),
-             aes(x = ecosystem, y = n, fill = ecosystem)) +
-  geom_col(width = 0.7) + theme_bw() +
-  labs(x = "", y = "Number of studies", fill = "") +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        legend.position = "none")
-
-# Figure 1
-combined <- p1 / p2 +
-  plot_annotation(tag_levels = "A") &
-  theme(plot.tag.location = "panel",       
-        plot.tag.position  = c(0.03, 0.95), 
-        plot.tag = element_text(size = 14, face = "bold")) 
-#ggsave("figures/phyto_func_group_combined.jpg", combined, width = 5, height = 6)
-
-#Fig 2: stacked bar plot of functional group types across ecosystems
-fg_type_eco <- rayyan_papers_include_final |>
-  filter(!is.na(ecosystem),
-         !is.na(func_group_type)) |>
-  mutate(ecosystem = stringr::str_replace_all(ecosystem, ";", ","),
-         func_group_type = stringr::str_replace_all(func_group_type, ";", ",")) |>
-  tidyr::separate_rows(ecosystem, sep = ",\\s*") |>
-  tidyr::separate_rows(func_group_type, sep = ",\\s*") |>
-  mutate(ecosystem = stringr::str_trim(ecosystem),
-        func_group_type = stringr::str_trim(func_group_type)) |>
-  distinct(study, ecosystem, func_group_type, .keep_all = TRUE) |>
-  group_by(ecosystem, func_group_type) |>
-  summarise(n = n(), .groups = "drop") |>
-  group_by(ecosystem) |>
-  mutate(prop = n / sum(n)) |>  
+#lastly, merge the double-reviewed rows so each row corresponds to a unique paper
+td_bu_final <- rayyan_papers_include_final |>
+  group_by(study) |>
+  slice(1) |>
   ungroup()
-
-#ggplot(fg_type_eco |> filter(!ecosystem %in% "aquatic"),
-#       aes(x = ecosystem, y = n, fill = func_group_type)) +
-#  geom_col(position = position_dodge(width = 0.8), width = 0.7) +
-#  #geom_col(width = 0.7) + 
-#  theme_bw() +
-#  labs(x = "", y = "Number of studies", fill = "") +
-#  theme(panel.grid = element_blank(),
-#        legend.position = "top",
-#        legend.direction = "horizontal")
-#ggsave("figures/phyto_func_group_by_ecosystem_total.jpg", width = 5, height = 4)
-
-#heatmap to see how prevalent different functional group definitions are across ecosystems
-ggplot(fg_type_eco |> filter(!ecosystem %in% "aquatic"), 
-       aes(x = func_group_type, y = ecosystem, fill = prop)) +
-  geom_tile(color = "white") +
-  geom_text(aes(label = scales::percent(prop, accuracy = 1)), color = "black", size = 3) +
-  scale_fill_gradient(low = "white", high = "steelblue") +
-  theme_minimal() + theme(axis.text = element_text(size=8),
-                          axis.text.x = element_text(angle = 45, hjust = 1), 
-                          panel.grid = element_blank()) +
-  labs(fill = "Proportion of studies", x = "", y = "")
-#ggsave("figures/phyto_func_group_by_ecosystem_heatmapl.jpg", width = 5, height = 4)
-
-
-#fig 3: td/bu emphasis across ecosystems
-fig3_df <- rayyan_papers_include_final |>
-  filter(!is.na(ecosystem), !is.na(func_group_type), !is.na(importance_td_vs_bu)) |>
-  mutate(ecosystem = str_replace_all(ecosystem, ";", ","),
-    func_group_type = str_replace_all(func_group_type, ";", ",")) |>
-  separate_rows(ecosystem, sep = ",\\s*") |>
-  separate_rows(func_group_type, sep = ",\\s*") |>
-  mutate(ecosystem = str_trim(ecosystem),
-         func_group_type = str_trim(func_group_type),
-         importance_td_vs_bu = if_else(is.na(importance_td_vs_bu),
-                                       "NA",importance_td_vs_bu)) |>
-  distinct(study, ecosystem, func_group_type, .keep_all = TRUE) |>
-  count(ecosystem, func_group_type, importance_td_vs_bu) |>   
-  group_by(ecosystem, func_group_type) |>
-  mutate(prop = n / sum(n)) |>
-  ungroup()
-
-ggplot(fig3_df |> filter(!ecosystem %in% "aquatic"),
-       aes(x = func_group_type, y = prop, fill = importance_td_vs_bu)) +
-  geom_col(position = position_dodge(width = 0.8, preserve = "single"), width = 0.7) +
-  facet_wrap(~ ecosystem) +
-  theme_bw() + labs(x = "", y = "Proportion of studies",
-                    fill = "Process emphasis") +
-  theme(axis.text = element_text(size=8),
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid = element_blank(),
-        legend.position = "top",
-        legend.direction = "horizontal")
-#ggsave("figures/td_bu_emphasis_by_func_groups.jpg", width = 5, height = 4)
-
-#fig 5 - td vs bu across ecosysyems
-td_eco_df <- rayyan_papers_include_final |>
-  filter(!is.na(ecosystem)) |>
-  mutate(ecosystem = str_replace_all(ecosystem, ";", ",")) |>
-  separate_rows(ecosystem, sep = ",\\s*") |>
-  mutate(ecosystem = str_trim(ecosystem),
-         importance_td_vs_bu = if_else(is.na(importance_td_vs_bu), 
-                                       "Not specified", importance_td_vs_bu)) |>
-  distinct(study, ecosystem, .keep_all = TRUE) |>
-  group_by(ecosystem, importance_td_vs_bu) |>
-  summarise(n = n(), .groups = "drop")
-
-ggplot(td_eco_df |> filter(!is.na(importance_td_vs_bu), 
-                           !ecosystem %in% "aquatic"),
-       aes(x = ecosystem, y = n, fill = importance_td_vs_bu)) +
-  geom_col(position = position_dodge(width = 0.8, preserve = "single"), width = 0.7) +
-  theme_bw() +
-  labs(x = "", y = "Number of studies", fill = "Process emphasis") +
-  theme(panel.grid = element_blank(),
-        legend.position = "top",
-        legend.direction = "horizontal")
-#ggsave("figures/td_bu_emphasis_by_ecosystem.jpg", width = 5, height = 4)
-
-#proportions
-td_eco_prop <- td_eco_df |>
-  group_by(ecosystem) |>
-  mutate(prop = n / sum(n))
-
-ggplot(td_eco_prop, aes(x = ecosystem, y = prop, fill = importance_td_vs_bu)) +
-  geom_col(position = position_dodge(width = 0.8, preserve = "single")) +
-  scale_y_continuous(labels = scales::percent_format()) +
-  theme_bw() +
-  labs(x = "", y = "Proportion of studies", fill = "Process emphasis")
+#write.csv(td_bu_final, "data/final_td_bu_df.csv", row.names = F)

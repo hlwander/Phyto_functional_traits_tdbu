@@ -1,0 +1,254 @@
+"study","year","ecosystem","top_bottom_both","func_group_type","study_type","experimental_design","importance_td_vs_bu"
+"Abu Noman et al 2019",2019,"marine",3,"taxonomic, morphological","field","in situ","both"
+"Acevedo-Trejos et al 2018",2018,"marine",3,"morphological","field, model","in situ, in silico","both"
+"Aksnes and Lie 1990",1990,"freshwater",3,"taxonomic, physiological","model","in silico","both"
+"Almeda et al 2018",2018,"marine",1,"taxonomic","field, lab","mesocosm, incubation",NA
+"Alvarez-Cobelas et al 2006",2006,"freshwater",3,"physiological","field","in situ","td"
+"Amorim et al 2019",2019,"freshwater",1,"morphological, physiological","lab","experiment",NA
+"An et al 2024",2024,"marine",3,"taxonomic","field","in situ","both"
+"Anneville et al 2019",2019,"freshwater",3,"taxonomic","field","in situ","both"
+"Arhonditsis et al 2007",2007,"estuary",2,"taxonomic","model","in silico",NA
+"Armengol et al 2017",2017,"marine",3,"taxonomic, morphological","field","experiment","td"
+"Auer et al 2004",2004,"freshwater",3,"taxonomic","field","in situ","both"
+"Balkic et al 2024",2024,"freshwater",1,"taxonomic","field","in situ",NA
+"Banos et al 2020",2020,"marine",1,"taxonomic","field","in situ",NA
+"Ben Othman et al 2018",2018,"marine",2,"taxonomic, morphological","field","experiment",NA
+"Bhele et al 2022",2022,"freshwater",3,"morphological","model","in silico","bu"
+"Blottiere et al 2017",2017,"freshwater",3,"taxonomic, morphological","field","experiment","both"
+"Boras et al 2015",2015,"marine",3,"morphological","field","in situ","both"
+"Borbee et al 2024",2024,"marine",3,"taxonomic","field","in situ","both"
+"Bouvy et al 2022",2022,"marine",3,"taxonomic, morphological","field","in situ","both"
+"Brito et al 2015",2015,"estuary",2,"taxonomic","field","in situ",NA
+"Brucet et al 2017",2017,"freshwater",1,"morphological","field","in situ",NA
+"Cai et al 2022",2022,"freshwater",2,"taxonomic","field","in situ",NA
+"Calero et al 2015",2015,"freshwater",3,"taxonomic","field","in situ","both"
+"Calic et al 2013",2013,"marine",3,"taxonomic, morphological","field","in situ","both"
+"Carlotti et al 2018",2018,"marine",3,"morphological","field","in situ","both"
+"Chabert et al 2024",2024,"marine",3,"morphological","model","in silico","both"
+"Challouf et al 2017",2017,"marine",3,"taxonomic","field","in situ","both"
+"Chang et al 2010",2010,"freshwater",3,"taxonomic","field","in situ","both"
+"Chen et al 2008",2008,"freshwater",3,"taxonomic, omics","field","in situ","both"
+"Chen et al 2023",2023,"marine",3,"taxonomic, morphological","field; model","in situ; in silico","both"
+"Chenillat et al 2013",2013,"marine",2,"morphological","model","in silico",NA
+"Chislock et al 2019",2019,"freshwater",3,"taxonomic, morphological","field","experiment","both"
+"Christaki et al 2017",2017,"marine",3,"taxonomic, omics","field","in situ","both"
+"Chrost et al 2009",2009,"freshwater",3,"morphological, physiological","field","in situ","both"
+"Chung et al 2009",2009,"estuary",3,"taxonomic","field","in situ","td"
+"Clerc et al 2021",2021,"marine",1,"morphological, physiological","model","in silico",NA
+"Cloern and Dufford 2005",2005,"estuary",3,"taxonomic; morphological; physiological","field","in situ","both"
+"Comte et al 2006",2006,"freshwater",3,"taxonomic, physiological","field","in situ","both"
+"Conroy et al 2017",2017,"freshwater",3,"taxonomic","field","in situ","bu"
+"Conte et al 2024",2024,"marine",3,"morphological","model","in silico","both"
+"Cossarini and Solidoro 2008",2008,"marine",3,"taxonomic, morphological, physiological","model","in silico","both"
+"Costa et al 2023",2023,"marine",3,"taxonomic, morphological","field","in situ","both"
+"Cozar et al 2003",2003,"freshwater",3,"morphological","field","in situ","both"
+"Daly et al 2019",2019,"freshwater",1,"taxonomic","field","in situ",NA
+"Danger et al 2009",2009,"freshwater",3,"taxonomic","field","experiment","both"
+"Dantas et al 2009",2009,"freshwater",3,"taxonomic","field","in situ","both"
+"Davidson et al 2010",2010,"marine",3,"taxonomic","field","in situ","td"
+"Davis et al 2012",2012,"freshwater",3,"taxonomic, morphological","field, lab","in situ, experiment","both"
+"Deng et al 2023",2023,"marine",1,"taxonomic","field","experiment",NA
+"Devkota et al 2023",2023,"freshwater",1,"taxonomic","lab","experiment",NA
+"Di Pane et al 2022",2022,"marine",3,"taxonomic, morphological, physiological","field","in situ","bu"
+"Diaz et al 2008",2008,"estuary",3,"taxonomic, morphological","field","in situ","both"
+"Diaz et al 2019",2019,"marine",3,"morphological","model","in silico","both"
+"Dinasquet et al 2012",2012,"estuary",3,"taxonomic","field","experiment","both"
+"Diniz and Moura 2022",2022,"freshwater",3,"taxonomic","field","experiment","both"
+"Diniz et al 2024",2024,"freshwater",3,"morphological","field","in situ","both"
+"Domingues et al 2011",2011,"estuary",2,"taxonomic","lab","experiment",NA
+"Dory et al 2023",2023,"freshwater",3,"taxonomic, morphological, physiological","field","in situ","both"
+"Duan et al 2021",2021,"marine",3,"taxonomic","field","experiment","both"
+"Dupuy et al 2011",2011,"marine",1,"taxonomic, morphological","field","in situ, experiment",NA
+"Dutkiewicz et al 2021",2021,"marine",3,"taxonomic, morphological, physiological","model","in silico","both"
+"Erdogan et al 2021",2021,"freshwater",3,"taxonomic, morphological","field","in situ","both"
+"Ersoy et al 2017",2017,"freshwater",3,"morphological","field","experiment","both"
+"Fennel et al 2003",2003,"marine",3,"morphological","model","in silico","both"
+"Fernandez-Alaez et al 2018",2018,"freshwater",3,"taxonomic","field","in situ","bu"
+"Fernández‐Aláez et al 2004",2004,"freshwater",3,"taxonomic","field","experiment","both"
+"Ferrareze and Nogueira 2013",2013,"freshwater",2,"taxonomic","field","in situ",NA
+"Fiechter and Moore 2009",2009,"marine",3,"morphological","model","in silico","both"
+"Fowler et al 2020",2020,"marine",1,"taxonomic","lab, model","in silico",NA
+"Frau and Gutierrez 2024",2024,"freshwater",1,"taxonomic","lab","experiment",NA
+"Frau et al 2015",2015,"freshwater",3,"taxonomic, morphological","field","in situ","both"
+"Frau et al 2017",2017,"freshwater",1,"morphological, physiological","field","in situ, experiment","td"
+"Frau et al 2021",2021,"freshwater",2,"taxonomic, morphological, physiological","field","in situ",NA
+"Frau et al 2022",2022,"freshwater",2,"physiological","field","in situ",NA
+"Gamito et al 2019",2019,"marine",3,"taxonomic","field","in situ","bu"
+"Garcia-Comas et al 2016",2016,"marine",3,"taxonomic, morphological","field","in situ","both"
+"Garcia-Gomez et al 2020",2020,"marine",3,"taxonomic, omics","field","in situ","both"
+"Gaxiola-Castro et al 2008",2008,"marine",3,"taxonomic","field","in situ","both"
+"Goericke 2002",2002,"marine",3,"taxonomic","field","in situ","td"
+"Goericke 2011",2011,"marine",3,"taxonomic","field","in situ","both"
+"Goldyn et al 2010",2010,"freshwater",3,"taxonomic","field","in situ","both"
+"Goncalves-Araujo et al 2018",2018,"marine",3,"taxonomic, morphological","field","in situ","both"
+"Gonzalez 2000",2000,"freshwater",3,"taxonomic","field","experiment","bu"
+"Gorgenyi et al 2024",2024,"freshwater",2,"morphological, physiological","field","in situ",NA
+"Grattepanche and Katz 2020",2020,"marine",3,"omics","field","experiment","both"
+"Griffin et al 2001",2001,"estuary",3,"taxonomic","model","in silico","both"
+"Grillo‑Avila et al 2025",2025,"freshwater",3,"taxonomic","lab","experiment","both"
+"Gsell et al 2016",2016,"freshwater",3,"taxonomic","field, model","in situ, in silico","bu"
+"Guo et al 2023",2023,"freshwater",3,"taxonomic","field","experiment","both"
+"Gutierrez-Rodriguez et al 2011",2011,"marine",3,"taxonomic","field","experiment","both"
+"Hambright et al 2007",2007,"freshwater",3,"morphological","field","experiment","both"
+"Harig and Bain 1998",1998,"freshwater",3,"taxonomic","field","in situ","both"
+"Hart 2006",2006,"freshwater",1,"taxonomic, morphological, physiological","field","in situ",NA
+"Hashioka et al 2013",2013,"marine",3,"morphological, physiological","model","in silico","both"
+"Havens 1994",1994,"freshwater",3,"taxonomic, morphological","field","experiment","bu"
+"He et al 2021",2021,"marine",1,"taxonomic","field","in situ",NA
+"Heiskanen et al 1996",1996,"marine",3,"taxonomic","field","experiment","both"
+"Hjorth et al 2008",2008,"marine",3,"taxonomic","field","experiment","both"
+"Hood et al 2006",2006,"marine",3,"taxonomic","model","in silico","both"
+"Horn and Horn 2008",2008,"freshwater",3,"taxonomic, morphological","field","in situ","td"
+"Hrycik and Stockwell 2021",2021,"freshwater",3,"taxonomic","field","experiment","bu"
+"Huebert et al 2018",2018,"marine",2,"taxonomic","model","in silico",NA
+"Huete-Ortega et al 2014",2014,"marine",3,"morphological","field","in situ","both"
+"Hunt et al 2013",2013,"marine",3,"taxonomic, physiological, omics","field","in situ","both"
+"Jiang et al 2012",2012,"estuary",1,"taxonomic","field","in situ",NA
+"Jin et al 2023",2023,"freshwater",2,"taxonomic","field","in situ",NA
+"Jing and Liu 2012",2012,"estuary, marine",3,"morphological, omics","field","in situ","bu"
+"Jurgens and Jeppesen 2000",2000,"freshwater",1,"morphological, physiological","field","in situ, experiment",NA
+"Ka et al 2012",2012,"freshwater",1,"taxonomic","lab","experiment",NA
+"Kang and Oh 2021",2021,"marine",3,"taxonomic, morphological","field, lab","in situ, experiment","both"
+"Karuza et al 2016",2016,"marine",3,"morphological","field","in situ","both"
+"Kath et al 2022",2022,"freshwater",3,"taxonomic, physiological","field","in situ","td"
+"Kavagutti et al 2023",2023,"freshwater",3,"taxonomic","field","in situ","both"
+"Kemp et al 2001",2001,"marine",3,"morphological","model","in silico","both"
+"Kenny et al 2009",2009,"marine",3,"taxonomic","field","in situ","both"
+"Kim et al 2023",2023,"estuary",2,"taxonomic","field","in situ",NA
+"Klauschies et al 2012",2012,"marine",3,"morphological","lab","experiment","both"
+"Landolfi et al 2021",2021,"marine",3,"physiological","model","in silico","td"
+"Lansac-Toha et al 2021",2021,"freshwater",3,"morphological","field","in situ","both"
+"Le Noac'h et al 2021",2021,"freshwater",3,"taxonomic","field","in situ, experiment","td"
+"Lemley et al 2020",2020,"estuary",3,"taxonomic","field","in situ","both"
+"Lemmens et al 2018",2018,"freshwater",3,"taxonomic","field","experiment","both"
+"Lepere et al 2006",2006,"freshwater",3,"morphological, physiological, omics","field","in situ","both"
+"Levesque et al 2019",2019,"freshwater",1,"taxonomic, omics","field","in situ",NA
+"Li et al 2020",2020,"freshwater",3,"taxonomic","field","in situ","bu"
+"Li et al 2022",2022,"freshwater",3,"taxonomic, omics","field","in situ","both"
+"Lin et al 2018",2018,"freshwater",3,"taxonomic, morphological","field","in situ","both"
+"Liu et al 2023",2023,"freshwater",3,"taxonomic","field","in situ","both"
+"Lofton et al 2020",2020,"freshwater",3,"taxonomic","field","in situ","both"
+"Lopez-Flores et al 2006",2006,"estuary",3,"taxonomic, morphological","field","in situ","bu"
+"Low et al 2010",2010,"freshwater",1,"taxonomic","field","in situ",NA
+"Lynam et al 2017",2017,"marine",3,"taxonomic","model","in silico","both"
+"Ma et al 2021",2021,"freshwater",3,"taxonomic, physiological","field","in situ","bu"
+"Makareviciute-Fichtner et al 2024",2024,"marine",3,"taxonomic, physiological","field","experiment","both"
+"Mandal et al 2018",2018,"freshwater",3,"taxonomic, morphological, physiological","lab","experiment","td"
+"Mangolte et al 2022",2022,"marine",3,"taxonomic, morphological","model","in silico","bu"
+"Mathes and Arndt 1995",1995,"freshwater",3,"taxonomic, morphological","field","in situ","both"
+"Matsuzaki et al 2018",2018,"freshwater",3,"taxonomic","model","in silico","bu"
+"McKenna et al 2006",2006,"freshwater",3,"morphological","model","in silico","bu"
+"McQuatters-Gollop and Vermaat 2011",2011,"marine",3,"taxonomic","field","in situ","both"
+"Mesquita et al 2024",2024,"freshwater",3,"taxonomic, morphological","field","in situ","bu"
+"Metaxas and Scheibling 1996",1996,"marine",3,"taxonomic","field","experiment","both"
+"Meyjes et al 2024",2024,"marine",1,"morphological","model","in silico",NA
+"Montes-Hugo and Alvarez-Borrego 2007",2007,"estuary",3,"taxonomic","field","in situ","both"
+"Moran et al 2018",2018,"marine",3,"taxonomic, morphological","field","experiment","both"
+"Moscoso et al 2022",2022,"marine",3,"morphological","model","in silico","both"
+"Moss et al 2003",2003,"freshwater",3,"taxonomic","field","experiment","both"
+"Mousseau et al 1996",1996,"marine",3,"taxonomic, morphological","field","in situ","both"
+"Moustaka-Gouni et al 2014",2014,"freshwater",3,"taxonomic","field","in situ","both"
+"Muller et al 2021",2021,"marine",3,"morphological","field, lab","experiment","both"
+"Murphy et al 2020",2020,"marine",3,"taxonomic","lab","experiment","both"
+"Muscarella et al 2014",2014,"freshwater",2,"taxonomic, omics","lab","experiment",NA
+"Napiorkowska-Krzebietke et al 2021",2021,"freshwater",3,"taxonomic","field","in situ","both"
+"Napiorkowska-Krzebietke et al 2023",2023,"freshwater",3,"taxonomic","field","in situ","both"
+"Neven et al 2025",2025,"marine",2,"taxonomic","field","in situ",NA
+"Ning et al 2005",2005,"marine",2,"taxonomic, morphological","field","in situ",NA
+"Noges et al 1998",1998,"freshwater",3,"taxonomic","field","in situ","bu"
+"Ogorelec et al 2021",2021,"freshwater",1,"morphological","field","experiment",NA
+"Olivier et al 2020",2020,"marine",2,"taxonomic, morphological","field","in situ",NA
+"Ozkan et al 2014",2014,"freshwater",3,"taxonomic","field","in situ","both"
+"Parvathi et al 2014",2014,"freshwater",3,"morphological","field","in situ","both"
+"Peralta-Maraver et al 2017",2017,"freshwater",3,"taxonomic","field","in situ","both"
+"Perhar et al 2013",2013,"freshwater",3,"physiological","model","in silico","bu"
+"Petzoldt et al 2009",2009,"freshwater",3,"morphological, physiological","model","in silico","both"
+"Peura et al 2012",2012,"freshwater",3,"taxonomic, physiological","field","experiment","both"
+"Piehler et al 2010",2010,"estuary",2,"taxonomic, morphological, physiological","field, lab","in situ, experiment",NA
+"Pikula et al 2024",2024,"freshwater",3,"taxonomic","field","in situ","both"
+"Pinheiro-Silva et al 2020",2020,"freshwater",1,"taxonomic","field","in situ",NA
+"Portielje and Van der Molen 1999",1999,"freshwater",3,"taxonomic","field","in situ","both"
+"Poxleitner et al 2016",2016,"freshwater",3,"taxonomic","field","experiment","bu"
+"Prowe et al 2012",2012,"marine",3,"physiological","model","in silico","bu"
+"Rakowski and Leibold 2022",2022,"freshwater",1,"morphological","field","experiment",NA
+"Rao et al 2024",2024,"freshwater",3,"taxonomic","field","in situ","both"
+"Reaugh et al 2007",2007,"estuary",1,"taxonomic, morphological","field, lab","in situ, experiment",NA
+"Reavie et al 2025",2025,"freshwater",3,"taxonomic, morphological","field","in situ","both"
+"Riegman et al 1995",1995,"marine",3,"morphological","model","in silico","both"
+"Rizo et al 2020",2020,"freshwater",2,"taxonomic","field","in situ",NA
+"Roberts et al 2003",2003,"marine",3,"taxonomic","field","experiment","both"
+"Roberts et al 2004",2004,"freshwater",3,"taxonomic","field","in situ","bu"
+"Rochera et al 2017",2017,"freshwater",3,"taxonomic, morphological","field","in situ","both"
+"Rock et al 2016",2016,"freshwater",3,"taxonomic, morphological","lab","experiment","both"
+"Roelke 2000",2000,"marine",3,"physiological","model","in silico","both"
+"Rollwagen-Bollens et al 2020",2020,"estuary",3,"taxonomic, physiological","field","in situ","both"
+"Roy 2009",2009,"marine",2,"taxonomic, physiological","field","in situ",NA
+"Rueckert and Giani 2008",2008,"freshwater",3,"taxonomic","lab","experiment","bu"
+"Rumschlag et al 2022",2022,"freshwater",3,"taxonomic","field","experiment","both"
+"Sabbagh et al 2020",2020,"marine",3,"morphological","field","in situ","td"
+"Sabbagh et al 2023",2023,"marine",3,"taxonomic","field","in situ","td"
+"Sailley et al 2013",2013,"marine",3,"physiological","model","in silico","both"
+"Sailley et al 2015",2015,"marine",3,"morphological, physiological","model","in silico","both"
+"Samuelsson and Andersson 2003",2003,"marine",3,"morphological","lab","experiment","bu"
+"Sanderson and Frost 1996",1996,"freshwater",3,"taxonomic","field","experiment","both"
+"Sauterey et al 2015",2015,"marine",2,"taxonomic, morphological","model","in silico",NA
+"Sauterey et al 2017",2017,"marine",3,"morphological","model","in silico","both"
+"Schiaffino et al 2019",2019,"freshwater",3,"morphological, physiological","field","in situ","both"
+"Schrum et al 2006",2006,"marine",2,"taxonomic","model","in silico",NA
+"Shimoda et al 2016",2016,"freshwater",3,"physiological","model","in silico","both"
+"Simek et al 2008",2008,"freshwater",3,"taxonomic","field","in situ","both"
+"Simek et al 2014",2014,"freshwater",3,"taxonomic","field","in situ","both"
+"Sinistro et al 2007",2007,"freshwater",1,"taxonomic, morphological","field","experiment",NA
+"Solic et al 2022",2022,"marine",3,"taxonomic","field, model","in situ","both"
+"Sommer et al 2001",2001,"freshwater",1,"taxonomic, morphological","field","experiment",NA
+"Sommer et al 2003",2003,"freshwater",1,"taxonomic, morphological","field","experiment",NA
+"Somogyi et al 2010",2010,"freshwater",2,"taxonomic, omics","field","in situ",NA
+"Spilling et al 2019",2019,"marine",3,"taxonomic","lab","experiment","both"
+"Spisla et al 2021",2021,"marine",3,"taxonomic","field","experiment","both"
+"St. Gelais et al 2021",2021,"freshwater",3,"taxonomic, morphological, physiological","field","in situ","both"
+"Strecker et al 2011",2011,"freshwater",3,"taxonomic, morphological","field","in situ","td"
+"Suikkanen et al 2021",2021,"marine",3,"taxonomic, physiological","field","in situ","bu"
+"Sun et al 2021",2021,"marine",3,"morphological","field","in situ","bu"
+"Sunda and Shertzer 2014",2014,"marine",3,"taxonomic, physiological","model","in silico","both"
+"Talaber et al 2018",2018,"marine",2,"taxonomic","field","in situ","bu"
+"Tanaka and Mano 2012",2012,"freshwater",3,"physiological","model","in silico","both"
+"Tanaka et al 2007",2007,"marine",3,"taxonomic, morphological","model","in silico","both"
+"Taniguchi et al 2014",2014,"marine",3,"morphological, physiological","model","in silico","both"
+"Taylor et al 2006",2006,"marine",2,"taxonomic","field, lab","in situ, experiment",NA
+"Tessier and Woodruff 2002",2002,"freshwater",3,"morphological, physiological, taxonomic","field","in situ","both"
+"Thongthaisong et al 2022",2022,"aquatic",3,"physiological","model","in silico","both"
+"Thorpe et al 2022",2022,"marine",3,"physiological","model","in silico","both"
+"To et al 2024",2024,"freshwater",3,"morphological","model","in silico","both"
+"Tong et al 2023",2023,"marine",3,"taxonomic","field, lab","in situ, experiment","both"
+"Travers et al 2009",2009,"marine",3,"taxonomic","model","in silico","both"
+"Travers-Trolet et al 2014",2014,"marine",3,"morphological","model","in silico","both"
+"Troussellier et al 2005",2005,"estuary",3,"taxonomic","field","experiment","both"
+"Tseng et al 2019",2019,"freshwater",3,"physiological","lab","experiment","both"
+"Urrutia-Cordero et al 2021",2021,"freshwater",3,"taxonomic","field","experiment","td"
+"Vad et al 2023",2023,"freshwater",3,"taxonomic","field","experiment","both"
+"Vascotto et al 2024",2024,"marine",2,"taxonomic, morphological","field","in situ",NA
+"Villeger et al 2019",2019,"marine",2,"taxonomic","lab","experiment",NA
+"Volta et al 2013",2013,"freshwater",3,"taxonomic","field","in situ","bu"
+"Walsh et al 2011",2011,"marine",3,"taxonomic","field, model","in situ, in silico","both"
+"Wang et al 2020",2020,"freshwater",2,"taxonomic, morphological, physiological","field","in situ",NA
+"Wang et al 2024",2024,"freshwater",3,"taxonomic","lab","experiment","td"
+"Ward et al 2012",2012,"marine",3,"taxonomic, physiological","model","in silico","both"
+"Ward et al 2014",2014,"marine",3,"morphological, physiological","model","in silico","both"
+"Wong et al 2021",2021,"marine",2,"morphological, physiological","lab","experiment",NA
+"Woodworth-Jefcoats et al 2013",2013,"marine",3,"morphological","model","in silico","both"
+"Yuan and Pollard 2018",2018,"freshwater",3,"taxonomic","model","in silico","both"
+"Yvon-Durocher et al 2015",2015,"freshwater",1,"morphological","field","experiment",NA
+"Zadereev et al 2022",2022,"freshwater",3,"taxonomic","field","in situ","both"
+"Zeng et al 2017",2017,"freshwater",2,"taxonomic","field","in situ",NA
+"Zhang et al 2007",2007,"freshwater",3,"taxonomic, physiological","field","in situ","both"
+"Zhang et al 2021",2021,"freshwater",3,"taxonomic","field","in situ","td"
+"Zhao et al 2013",2013,"freshwater",3,"taxonomic, morphological","field","experiment","td"
+"Zhong et al 2024",2024,"marine",3,"taxonomic","field","in situ","both"
+"Zhu et al 2021",2021,"freshwater",1,"taxonomic","field","in situ",NA
+"Zoccarato et al 2016",2016,"marine",1,"taxonomic, morphological","lab","experiment",NA
+"da Silva et al 2019",2019,"freshwater",1,"morphological","lab","experiment",NA
+"das Candeias et al 2022",2022,"freshwater",3,"morphological","field","in situ","both"
+"de Gamiz-Zearra et al 2024",2024,"marine",3,"morphological","model","in silico","bu"
+"de Magalhaes et al 2021",2021,"freshwater",3,"morphological","field","in situ","bu"
+"do Nascimento Filho et al 2019",2019,"freshwater",2,"taxonomic","field","in situ",NA
+"d’Oultremont and Gutierrez 2002",2002,"freshwater",3,"taxonomic","model","in silico","both"
