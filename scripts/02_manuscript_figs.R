@@ -1,7 +1,7 @@
 #Script for creating all manuscript figures
 
 pacman::p_load(dplyr, tidyverse, ggplot2, patchwork, colorblindcheck, 
-               DiagrammeR, DiagrammeRsvg, rsvg, vcd) #ggpubr
+               DiagrammeR, DiagrammeRsvg, rsvg, vcd, stats) #ggpubr
 
 #read in cleaned data
 td_bu_final <- read.csv("data/final_td_bu_df.csv")
@@ -14,7 +14,8 @@ year_eco_sum <- td_bu_final |>
   mutate(ecosystem = str_trim(ecosystem)) |> #split ecosystem into multiple rows when applicable 
   group_by(year, ecosystem) |>
   summarise(n = n(), .groups = "drop") |>
-  mutate(ecosystem = factor(ecosystem, levels = c("freshwater", "marine", "estuary")))
+  mutate(ecosystem = factor(ecosystem, levels = c("freshwater", "marine", "estuary"))) |>
+  complete(year, ecosystem, fill = list(n = 0))
 
 fg_eco_sum <- td_bu_final |>
   mutate(ecosystem = str_replace_all(ecosystem, ";", ",")) |>
@@ -88,7 +89,7 @@ ggplot(fg_type_eco |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
 
 #fig 3: td/bu emphasis across ecosystems
 fig3_df <- td_bu_final |>
-  filter(!is.na(ecosystem), !is.na(func_group_type)) |> #, !is.na(importance_td_vs_bu)
+  filter(!is.na(func_group_type)) |> #, !is.na(importance_td_vs_bu)
   mutate(ecosystem = str_replace_all(ecosystem, ";", ","),
          func_group_type = str_replace_all(func_group_type, ";", ",")) |>
   separate_rows(ecosystem, sep = ",\\s*") |>
@@ -105,8 +106,8 @@ fig3_df <- td_bu_final |>
   mutate(importance_td_vs_bu = factor(importance_td_vs_bu, levels = c("td", "bu", "both", "NA")),
          func_group_type = factor(func_group_type, levels = c(
            "taxonomic","omics", "morphological", "physiological")),
-         ecosystem = factor(ecosystem, levels = c("freshwater", "marine", "estuary")))
-
+         ecosystem = factor(ecosystem, levels = c("freshwater", "marine", "estuary"))) |>
+  filter(!is.na(ecosystem))
 
 ggplot(fig3_df |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
                    aes(x = func_group_type, y = n, fill = importance_td_vs_bu)) +
@@ -121,6 +122,14 @@ ggplot(fig3_df |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
         legend.direction = "horizontal",
         legend.key.size = unit(0.4, "cm"))
 #ggsave("figures/td_bu_emphasis_by_func_groups_raw.jpg", width = 4, height = 3)
+
+#overall fg type sums across ecosystems
+fg_sums <- fig3_df |>
+  group_by(ecosystem, func_group_type) |>
+  filter(!is.na(ecosystem)) |>
+  summarise(n = sum(n))
+
+#new figure or table to add to the ms??????
 
 #Figure S1
 ggplot(fig3_df |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
@@ -183,8 +192,6 @@ ggplot(td_eco_prop |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
 #------------------------------------------------------------------------------#
 #statistical tests for each research question 
 
-
-
 # ---- RQ1: ecosystem x process emphasis (secondary check) ----
 eco_proc_mat <- td_eco_df |>
   filter(!ecosystem %in% "aquatic", !is.na(ecosystem)) |>
@@ -197,24 +204,25 @@ fisher.test(eco_proc_mat, simulate.p.value = TRUE, B = 10000) # p = 0.3844
 DescTools::CramerV(eco_proc_mat)                              # 0.111
 
 # ---- RQ2: functional group type x ecosystem ----
-fg_eco_table <- xtabs(~ ecosystem + func_group_type, data = stats_df)
+fg_eco_table <- xtabs(~ ecosystem + func_group_type, data = fig3_df)
 
 set.seed(123)
-fisher.test(fg_eco_table, simulate.p.value = TRUE, B = 10000) # p = 0.4985
-DescTools::CramerV(fg_eco_table)                              # 0.084
+fisher.test(fg_eco_table, simulate.p.value = TRUE, B = 10000) # p = 0.9952
+DescTools::CramerV(fg_eco_table)                              # 0.090
 
 # ---- RQ3: functional group type x process emphasis ----
 proc_fg_table <- xtabs(~ func_group_type + importance_td_vs_bu,
-                       data = filter(stats_df, importance_td_vs_bu != "NA"))
+                       data = filter(fig3_df, importance_td_vs_bu != "NA"),
+                       drop.unused.levels = TRUE)
 
 set.seed(123)
-fisher.test(proc_fg_table, simulate.p.value = TRUE, B = 10000) # p = 0.9529
-DescTools::CramerV(proc_fg_table)                              # 0.059
+fisher.test(proc_fg_table, simulate.p.value = TRUE, B = 10000) # p = 0.9681
+DescTools::CramerV(proc_fg_table)                              # 0.182
 
 #no significant associations!!
 
 #------------------------------------------------------------------------------#
-# flowchard Figure 1
+# flowchart Figure 1
 prisma <- grViz("
 digraph prisma {
   graph [layout = dot, rankdir = TB, nodesep = 0.4, ranksep = 0.5]
