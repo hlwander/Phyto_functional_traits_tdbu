@@ -48,7 +48,7 @@ p2 <- ggplot(fg_eco_sum |> filter(!ecosystem %in% "aquatic" & !is.na(ecosystem))
         panel.grid.minor = element_blank(),
         legend.position = "none")
 
-# Figure 1
+# Figure 2
 fig1 <- p1 / p2 +
   plot_annotation(tag_levels = "A") &
   theme(plot.tag.location = "panel",       
@@ -56,7 +56,7 @@ fig1 <- p1 / p2 +
         plot.tag = element_text(size = 14, face = "bold")) 
 #ggsave("figures/phyto_func_group_combined.jpg", fig1, width = 5, height = 6)
 
-#Fig 2: stacked bar plot of functional group types across ecosystems
+#Fig 3 heatmap of functional group types across ecosystems
 fg_type_eco <- td_bu_final |>
   filter(!is.na(func_group_type)) |>
   mutate(ecosystem = stringr::str_replace_all(ecosystem, ";", ","),
@@ -87,7 +87,7 @@ ggplot(fg_type_eco |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
   labs(fill = "Proportion of studies", x = "", y = "")
 #ggsave("figures/phyto_func_group_by_ecosystem_heatmapl.jpg", width = 5, height = 4)
 
-#fig 3: td/bu emphasis across ecosystems
+#fig 4: td/bu emphasis across ecosystems
 fig3_df <- td_bu_final |>
   filter(!is.na(func_group_type)) |> #, !is.na(importance_td_vs_bu)
   mutate(ecosystem = str_replace_all(ecosystem, ";", ","),
@@ -146,7 +146,7 @@ ggplot(fig3_df |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
         legend.key.size = unit(0.4, "cm"))
 #ggsave("figures/td_bu_emphasis_by_func_groups_prop.jpg", width = 4, height = 3)
 
-#fig 4 - td vs bu across ecosystems
+#fig 5 - td vs bu across ecosystems
 td_eco_df <- td_bu_final |>
   mutate(ecosystem = str_replace_all(ecosystem, ";", ",")) |>
   separate_rows(ecosystem, sep = ",\\s*") |>
@@ -159,24 +159,11 @@ td_eco_df <- td_bu_final |>
   mutate(importance_td_vs_bu = factor(importance_td_vs_bu, levels = c("td", "bu", "both", "NA")),
           ecosystem = factor(ecosystem, levels = c("freshwater","marine", "estuary")))
 
-ggplot(td_eco_df |> filter(!ecosystem %in% "aquatic" , !is.na(ecosystem)),
-       aes(x = ecosystem, y = n, fill = importance_td_vs_bu)) +
-  geom_col(position = position_dodge(width = 0.8, preserve = "single"), width = 0.7) +
-  theme_bw(base_size = 7) +
-  scale_fill_manual(values = c("#586BA4","#F76C5E", "#F5DD90", "grey70")) +
-  labs(x = "", y = "Number of studies", fill = "Process emphasis") +
-  theme(panel.grid = element_blank(),
-        legend.position = "top",
-        legend.direction = "horizontal",
-        legend.key.size = unit(0.4, "cm"))
-#ggsave("figures/phyto_func_group_process_emphasis_by_ecosystem_raw.jpg", width = 4, height = 3)
-
 #proportions
 td_eco_prop <- td_eco_df |>
   group_by(ecosystem) |>
   mutate(prop = n / sum(n))
 
-#Figure S2
 ggplot(td_eco_prop |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
        aes(x = ecosystem, y = prop, fill = importance_td_vs_bu)) +
   geom_col(position = position_dodge(width = 0.8, preserve = "single")) +
@@ -188,6 +175,19 @@ ggplot(td_eco_prop |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
         legend.position = "top",
         legend.direction = "horizontal")
 #ggsave("figures/phyto_func_group_process_emphasis_by_ecosystem_prop.jpg", width = 4, height = 3)
+
+##Figure S2 - raw counts
+ggplot(td_eco_df |> filter(!ecosystem %in% "aquatic" , !is.na(ecosystem)),
+       aes(x = ecosystem, y = n, fill = importance_td_vs_bu)) +
+  geom_col(position = position_dodge(width = 0.8, preserve = "single"), width = 0.7) +
+  theme_bw(base_size = 7) +
+  scale_fill_manual(values = c("#586BA4","#F76C5E", "#F5DD90", "grey70")) +
+  labs(x = "", y = "Number of studies", fill = "Process emphasis") +
+  theme(panel.grid = element_blank(),
+        legend.position = "top",
+        legend.direction = "horizontal",
+        legend.key.size = unit(0.4, "cm"))
+#ggsave("figures/phyto_func_group_process_emphasis_by_ecosystem_raw.jpg", width = 4, height = 3)
 
 #------------------------------------------------------------------------------#
 #statistical tests for each research question 
