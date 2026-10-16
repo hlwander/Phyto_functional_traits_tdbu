@@ -1,7 +1,7 @@
 #Script for creating all manuscript figures
 
 pacman::p_load(dplyr, tidyverse, ggplot2, patchwork, colorblindcheck, 
-               DiagrammeR, DiagrammeRsvg, rsvg, vcd, stats) #ggpubr
+               DiagrammeR, DiagrammeRsvg, rsvg, vcd, stats) 
 
 #read in cleaned data
 td_bu_final <- read.csv("data/final_td_bu_df.csv")
@@ -49,14 +49,52 @@ p2 <- ggplot(fg_eco_sum |> filter(!ecosystem %in% "aquatic" & !is.na(ecosystem))
         legend.position = "none")
 
 # Figure 2
-fig1 <- p1 / p2 +
+fig2 <- p1 / p2 +
   plot_annotation(tag_levels = "A") &
   theme(plot.tag.location = "panel",       
         plot.tag.position  = c(-0.06,1), 
         plot.tag = element_text(size = 14, face = "bold")) 
-#ggsave("figures/phyto_func_group_combined.jpg", fig1, width = 5, height = 6)
+#ggsave("figures/phyto_func_group_combined.jpg", fig2, width = 5, height = 6)
 
-#Fig 3 heatmap of functional group types across ecosystems
+#Fig 3 - functional group type across ecosystem and process
+dot_df <- td_bu_final |>
+  filter(!is.na(func_group_type)) |> #, 
+  mutate(ecosystem = str_replace_all(ecosystem, ";", ","),
+         func_group_type = str_replace_all(func_group_type, ";", ",")) |>
+  separate_rows(ecosystem, sep = ",\\s*") |>
+  separate_rows(func_group_type, sep = ",\\s*") |>
+  mutate(ecosystem = str_trim(ecosystem),
+         func_group_type = str_trim(func_group_type)) |>
+  distinct(study, ecosystem, func_group_type, .keep_all = TRUE) |>
+  count(ecosystem, func_group_type, top_bottom_both) |>   
+  group_by(ecosystem, func_group_type) |>
+  mutate(prop = n / sum(n)) |>
+  ungroup() |>
+  mutate(top_bottom_both = factor(top_bottom_both, levels = c("1", "2", "3")),
+         func_group_type = factor(func_group_type, levels = c(
+           "taxonomic","omics", "morphological", "physiological")),
+         ecosystem = factor(ecosystem, levels = c("freshwater", "marine", "estuary"))) |>
+  filter(!is.na(ecosystem), !ecosystem %in% "aquatic") |>
+  complete(ecosystem, func_group_type, top_bottom_both, fill = list(n = 0))
+
+ggplot(dot_df, aes(x = n, y = func_group_type)) +
+  geom_line(aes(group = func_group_type), color = "grey75", linewidth = 0.5) +
+  geom_point(aes(color = top_bottom_both), size = 2.5) +
+  facet_wrap(~ ecosystem, scale = "free_x") +
+  scale_color_manual(values = c("#586BA4", "#F76C5E", "#F5DD90"),
+                     labels = c("Top-down", "Bottom-up", "Both"),
+                     name = "") +
+  labs(x = "Number of studies", y = "", color = "Process") +
+  theme_bw(base_size = 7) +
+  theme(panel.grid.major.x = element_line(color = "grey92"),
+        panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_blank(),
+        legend.position = "top",
+        legend.direction = "horizontal",
+        legend.key.size = unit(0.4, "cm"))
+#ggsave("figures/td_bu_by_func_groups_raw.jpg", width = 4, height = 3)
+
+#Fig 4 heatmap of functional group types across ecosystems
 fg_type_eco <- td_bu_final |>
   filter(!is.na(func_group_type)) |>
   mutate(ecosystem = stringr::str_replace_all(ecosystem, ";", ","),
@@ -87,8 +125,8 @@ ggplot(fg_type_eco |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
   labs(fill = "Proportion of studies", x = "", y = "")
 #ggsave("figures/phyto_func_group_by_ecosystem_heatmapl.jpg", width = 5, height = 4)
 
-#fig 4: td/bu emphasis across ecosystems
-fig3_df <- td_bu_final |>
+#fig 5: td/bu emphasis across ecosystems
+fig5_df <- td_bu_final |>
   filter(!is.na(func_group_type)) |> #, !is.na(importance_td_vs_bu)
   mutate(ecosystem = str_replace_all(ecosystem, ";", ","),
          func_group_type = str_replace_all(func_group_type, ";", ",")) |>
@@ -109,7 +147,7 @@ fig3_df <- td_bu_final |>
          ecosystem = factor(ecosystem, levels = c("freshwater", "marine", "estuary"))) |>
   filter(!is.na(ecosystem))
 
-ggplot(fig3_df |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
+ggplot(fig5_df |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
                    aes(x = func_group_type, y = n, fill = importance_td_vs_bu)) +
   geom_col(position = position_dodge(width = 0.8, preserve = "single"), width = 0.7) +
   facet_wrap(~ ecosystem, scales = "free_y") +
@@ -124,15 +162,13 @@ ggplot(fig3_df |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
 #ggsave("figures/td_bu_emphasis_by_func_groups_raw.jpg", width = 4, height = 3)
 
 #overall fg type sums across ecosystems
-fg_sums <- fig3_df |>
+fg_sums <- fig5_df |>
   group_by(ecosystem, func_group_type) |>
   filter(!is.na(ecosystem)) |>
   summarise(n = sum(n))
 
-#new figure or table to add to the ms??????
-
 #Figure S1
-ggplot(fig3_df |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
+ggplot(fig5_df |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
        aes(x = func_group_type, y = prop, fill = importance_td_vs_bu)) +
   geom_col(position = position_dodge(width = 0.8, preserve = "single"), width = 0.7) +
   facet_wrap(~ ecosystem) +
@@ -146,49 +182,6 @@ ggplot(fig3_df |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
         legend.key.size = unit(0.4, "cm"))
 #ggsave("figures/td_bu_emphasis_by_func_groups_prop.jpg", width = 4, height = 3)
 
-#fig 5 - td vs bu across ecosystems
-td_eco_df <- td_bu_final |>
-  mutate(ecosystem = str_replace_all(ecosystem, ";", ",")) |>
-  separate_rows(ecosystem, sep = ",\\s*") |>
-  mutate(ecosystem = str_trim(ecosystem),
-         importance_td_vs_bu = if_else(is.na(importance_td_vs_bu), 
-                                       "Not specified", importance_td_vs_bu)) |>
-  distinct(study, ecosystem, .keep_all = TRUE) |>
-  group_by(ecosystem, importance_td_vs_bu) |>
-  summarise(n = n(), .groups = "drop") |>
-  mutate(importance_td_vs_bu = factor(importance_td_vs_bu, levels = c("td", "bu", "both", "NA")),
-          ecosystem = factor(ecosystem, levels = c("freshwater","marine", "estuary")))
-
-#proportions
-td_eco_prop <- td_eco_df |>
-  group_by(ecosystem) |>
-  mutate(prop = n / sum(n))
-
-ggplot(td_eco_prop |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
-       aes(x = ecosystem, y = prop, fill = importance_td_vs_bu)) +
-  geom_col(position = position_dodge(width = 0.8, preserve = "single")) +
-  scale_y_continuous(labels = scales::percent_format()) +
-  scale_fill_manual(values = c("#586BA4","#F76C5E", "#F5DD90", "grey70")) +
-  theme_bw(base_size = 7) +
-  labs(x = "", y = "Proportion of studies", fill = "Process emphasis") +
-  theme(panel.grid = element_blank(),
-        legend.position = "top",
-        legend.direction = "horizontal")
-#ggsave("figures/phyto_func_group_process_emphasis_by_ecosystem_prop.jpg", width = 4, height = 3)
-
-##Figure S2 - raw counts
-ggplot(td_eco_df |> filter(!ecosystem %in% "aquatic" , !is.na(ecosystem)),
-       aes(x = ecosystem, y = n, fill = importance_td_vs_bu)) +
-  geom_col(position = position_dodge(width = 0.8, preserve = "single"), width = 0.7) +
-  theme_bw(base_size = 7) +
-  scale_fill_manual(values = c("#586BA4","#F76C5E", "#F5DD90", "grey70")) +
-  labs(x = "", y = "Number of studies", fill = "Process emphasis") +
-  theme(panel.grid = element_blank(),
-        legend.position = "top",
-        legend.direction = "horizontal",
-        legend.key.size = unit(0.4, "cm"))
-#ggsave("figures/phyto_func_group_process_emphasis_by_ecosystem_raw.jpg", width = 4, height = 3)
-
 #------------------------------------------------------------------------------#
 #statistical tests for each research question 
 
@@ -201,23 +194,27 @@ eco_proc_mat <- td_eco_df |>
 
 set.seed(123)
 fisher.test(eco_proc_mat, simulate.p.value = TRUE, B = 10000) # p = 0.3844
-DescTools::CramerV(eco_proc_mat)                              # 0.111
+DescTools::CramerV(eco_proc_mat, correct = T)                 # 0.0224
+#no evidence that process emphasis is related to ecosystem
 
 # ---- RQ2: functional group type x ecosystem ----
-fg_eco_table <- xtabs(~ ecosystem + func_group_type, data = fig3_df)
+fg_eco_table <- xtabs(n ~ ecosystem + func_group_type, 
+                      data = droplevels(filter(dot_df, !ecosystem %in% "aquatic")))
 
 set.seed(123)
-fisher.test(fg_eco_table, simulate.p.value = TRUE, B = 10000) # p = 0.9952
-DescTools::CramerV(fg_eco_table)                              # 0.090
+fisher.test(fg_eco_table, simulate.p.value = TRUE, B = 10000) # p = 0.5045
+DescTools::CramerV(fg_eco_table, correct = T)                 # 0.00
+#no evidence that ecosystem is related to functional group type
 
 # ---- RQ3: functional group type x process emphasis ----
-proc_fg_table <- xtabs(~ func_group_type + importance_td_vs_bu,
-                       data = filter(fig3_df, importance_td_vs_bu != "NA"),
+proc_fg_table <- xtabs(n ~ func_group_type + importance_td_vs_bu,
+                       data = filter(fig5_df, importance_td_vs_bu != "NA"),
                        drop.unused.levels = TRUE)
 
 set.seed(123)
-fisher.test(proc_fg_table, simulate.p.value = TRUE, B = 10000) # p = 0.9681
-DescTools::CramerV(proc_fg_table)                              # 0.182
+fisher.test(proc_fg_table, simulate.p.value = TRUE, B = 10000) # p = 0.9526
+DescTools::CramerV(proc_fg_table)                              # 0.059
+#no evidence that process empasis is related to functional group type
 
 #no significant associations!!
 
