@@ -12,4 +12,4 @@ This repository contains the following folders: 1) `data` contains the initial e
 
 # Instructions to reproduce figures and analyses
 
-The final cleaned data used to generate figures is available in the `data` folder (*final_td_bu_df.csv*), so it is only necessary to run `02_manuscript_figs.R` in its entirety.
+The final cleaned data used to generate figures are available in the `data` folder (*final_td_bu_df.csv*), so it is only necessary to run `02_manuscript_figs.R'.
