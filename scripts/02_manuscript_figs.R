@@ -186,15 +186,13 @@ ggplot(fig5_df |> filter(!ecosystem %in% "aquatic", !is.na(ecosystem)),
 #statistical tests for each research question 
 
 # ---- RQ1: ecosystem x process emphasis (secondary check) ----
-eco_proc_mat <- td_eco_df |>
-  filter(!ecosystem %in% "aquatic", !is.na(ecosystem)) |>
-  tidyr::pivot_wider(names_from = importance_td_vs_bu, values_from = n, values_fill = 0) |>
-  tibble::column_to_rownames("ecosystem") |>
-  as.matrix()
+
+eco_proc_table <- xtabs(n ~ ecosystem + importance_td_vs_bu,
+                        data = droplevels(filter(fig5_df, !ecosystem %in% "aquatic")))
 
 set.seed(123)
-fisher.test(eco_proc_mat, simulate.p.value = TRUE, B = 10000) # p = 0.3844
-DescTools::CramerV(eco_proc_mat, correct = T)                 # 0.0224
+fisher.test(eco_proc_table, simulate.p.value = TRUE, B = 10000) # p = 0.1702
+DescTools::CramerV(eco_proc_table, correct = T)                 # 0.0658
 #no evidence that process emphasis is related to ecosystem
 
 # ---- RQ2: functional group type x ecosystem ----
