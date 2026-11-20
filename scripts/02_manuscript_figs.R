@@ -78,12 +78,11 @@ dot_df <- td_bu_final |>
   complete(ecosystem, func_group_type, top_bottom_both, fill = list(n = 0))
 
 ggplot(dot_df, aes(x = n, y = func_group_type)) +
-  geom_line(aes(group = func_group_type), color = "grey75", linewidth = 0.5) +
   geom_point(aes(color = top_bottom_both), size = 2.5) +
   facet_wrap(~ ecosystem, scale = "free_x") +
   scale_color_manual(values = c("#586BA4", "#F76C5E", "#F5DD90"),
                      labels = c("Top-down", "Bottom-up", "Both"),
-                     name = "") +
+                     name = "Measured process") +
   labs(x = "Number of studies", y = "", color = "Process") +
   theme_bw(base_size = 7) +
   theme(panel.grid.major.x = element_line(color = "grey92"),
@@ -225,10 +224,10 @@ digraph prisma {
 
   A [label = 'Papers identified through\\nWeb of Science search\\n(n = 855)']
   B [label = 'Duplicate papers removed\\n(n = 2)']
-  C [label = 'Papers screened\\n(title/abstract)\\n(n = 853)']
+  C [label = 'Papers screened\\n(title/abstract; n = 853)']
   D [label = 'Papers excluded\\n(n = 313)']
-  E [label = 'Full-text articles\\nassessed for eligibility\\n(n = 540)']
-  F [label = < Full-text articles excluded<br/>(n = 287)<br/>
+  E [label = 'Full-texts assessed\\n for eligibility (n = 540)']
+  F [label = < Papers excluded<br/>(n = 287)<br/>
               <br align='left'/><B>Reasons:</B>
               <br align='left'/>1) Literature review or meta-analysis
               <br align='left'/>2) No phytoplankton in study
